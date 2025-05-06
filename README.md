@@ -17,7 +17,7 @@ Open terminal in the folder you chose to be the directory in which the respirato
 use the following command,
 
 ```bash
-git clone https://github.com/TetraCoders/tetracoders.github.io
+git clone https://github.com/TernCoders/TernCoders.github.io
 ```
 
 then open the folder in file explorer and move to step 2.
@@ -101,5 +101,5 @@ After a moment, you will get a browser alert that the email is sent and you will
 ## For any problem during the preceding process contact one of the following:
 
 <ul>
-    <li>tetramembers@gmail.com</li>
+    <li>terncoders@gmail.com</li>
 </ul>
