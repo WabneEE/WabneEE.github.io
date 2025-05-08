@@ -58,8 +58,13 @@ If any of them are missing, follow the steps below:
 - Click **New**, then **Browse** to your MySQL folder then MySQL server 8.0 folder then select the bin folder.
 - Press **OK** on all dialogs to apply the changes.
 - Important - Restart the terminal
+- Open contact.php located in the cloned folder and go to the following line and **change the (your_password)** to your chosen MySQL root password.
 
-Then to create the database and table:
+```php
+$pdo = new PDO("mysql:host=localhost;dbname=contact_form;charset=utf8", "root", "(your_password)");
+```
+
+Then open terminal and create the database and table:
 
 ```bash
 mysql -u root -p
@@ -138,20 +143,22 @@ You will receive a confirmation email as well.
 
 ### To view stored submissions in the database:
 
+#### Option 1 : Direct through terminal (May provide bad result interface)
+
 Run the following in terminal:
 
 ```bash
 mysql -u root -p
 ```
 
-Then:
+Enter your password and sign in, Then:
 
 ```sql
 USE contact_form;
 SELECT * FROM messages;
 ```
 
----
+#### Option 2 : Using MySQL Workbench (Better interface but more tedious to set up)
 
 ## For MacOS/Linux:
 
