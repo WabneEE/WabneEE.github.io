@@ -1,105 +1,164 @@
 # To use the contact us form locally:
 
-## For windows:-
+## For Windows:
 
-### Step 1. Cloning the respiratory either directly or using git if installed on your device.
+### Step 1. Cloning the repository either directly or using Git (if installed on your device)
 
-#### (i) If directly then(Recommended for all users),
+#### (i) If directly (Recommended for all users):
 
-Click the green <>Code button on the respiratory page.<br>
-Under local at last, click the Download ZIP button.<br>
-Then, download in desired folder and extract then, open the folder and<br>
-then move to Step 2.
+Click the green "<> Code" button on the repository page.  
+Under “Local,” click the **Download ZIP** button.  
+Download the ZIP to your desired folder.  
+Extract it, open the folder, then move to **Step 2**.
 
-#### (ii) If using git then,
+#### (ii) If using Git:
 
-Open terminal in the folder you chose to be the directory in which the respiratory is to be cloned then<br>
-use the following command,
+Open terminal in the directory where you want to clone the repository.  
+Run the following command:
 
 ```bash
 git clone https://github.com/TernCoders/TernCoders.github.io
 ```
 
-then open the folder in file explorer and move to step 2.
+Open the cloned folder in File Explorer and move to **Step 2**.
 
-### Step 2. Installing nessary programs:
+### Step 2. Installing necessary programs:
 
-##### To check for already installed programs to make sure you install only the uninstalled ones use the following command:
+#### First, verify whether these tools are already installed:
 
 ```bash
-npm --version
 php --version
+node --version
+mysql --version
 ```
 
-#### For npm:
+If any of them are missing, follow the steps below:
 
-Open Imp packages folder.<br>
-Click on node js msi file.<br>
-Navigate with allowing the "Automatically install necessary tools..." option
-then Click next and install and wait some time.<br>
-After it installs click finish and then a window will pop up and follow the instructions given.<br>
-While it starts installing other necessary tools wait some time and have a break.<br>
+#### Installing PHP:
 
-#### For php:
+- Open the `Imp packages` folder and extract the PHP zip file into your preferred location.
+- Press the Windows key → search for “Environment Variables” → click **Edit the system environment variables**.
+- In **System Properties**, click **Environment Variables** → under _System Variables_, find and edit `Path`.
+- Click **New**, then **Browse** to your PHP folder and select it.
+- Press **OK** on all dialogs to apply the changes.
 
-After the tools install navigate back to the Imp packages folder and click on the php zip.<br>
-Extract in your desired folder.<br>
-Then, press windows key and type environment variables and click "edit the system environment variables" option
-then click the environment variables... button
-then under system variables click path then click the edit function then browse to the installed php location and choose the php folder then click ok few times to close the menu.<br><br>
+#### Installing Node.js and npm:
 
-##### Again, to check for already installed programs to make sure you install only the uninstalled ones use the following command:
+- Open the `Imp packages` folder and run the Node.js `.msi` installer.
+- During installation, enable **"Automatically install necessary tools..."**.
+- Click **Next**, install, and then **Finish**.
+- Wait for additional tool installations in the terminal popup that follows.
+
+#### Installing MySQL:
+
+- Open the `Imp packages` folder and run the MySQL `.msi` installer.
+- Choose default configuration and set a root password during setup.
+- After installation, press the Windows key → search for “Environment Variables” → click **Edit the system environment variables**.
+- In **System Properties**, click **Environment Variables** → under _System Variables_, find and edit `Path`.
+- Click **New**, then **Browse** to your MySQL folder then MySQL server 8.0 folder then select the bin folder.
+- Press **OK** on all dialogs to apply the changes.
+- Important - Restart the terminal
+
+Then to create the database and table:
 
 ```bash
-browser-sync --version
+mysql -u root -p
+```
+
+Enter your MySQL root password, then:
+
+```sql
+CREATE DATABASE contact_form;
+USE contact_form;
+CREATE TABLE messages (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) DEFAULT 'Not_Given',
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(10) DEFAULT 'Not_Given',
+    subject VARCHAR(255) NOT NULL,
+    message TEXT,
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+Exit MySQL:
+
+```sql
+exit;
+```
+
+#### Then verify Composer and Browser-Sync:
+
+```bash
 composer --version
+browser-sync --version
 ```
 
-#### For browser-sync:
+#### Installing Composer:
 
-Use the following command in terminal:
+- Run the Composer installer from the `Imp packages` folder.
+- Choose Developer Mode and install to your preferred directory.
+- When prompted for PHP, browse to and select `php.exe` from your installed PHP folder.
+- Complete the installation.
 
-```bash
-npm install -g browser-sync
-```
-
-#### For composer:
-
-Go back to the Imp packages folder and click on composer exe.<br>
-Choose the install mode as per your preference.<br>
-Navigate with developer mode and choose your desired installation location.<br>
-For the command line php navigate to php folder and open it to choose php.exe
-Then navigate till end and install composer and finish.<br><br>
-Then open the cloned folder and open terminal in that folder or vise-versa.
-Then paste the following command.
+To install PHPMailer in the project:
 
 ```bash
 composer require phpmailer/phpmailer
 ```
 
+#### Installing Browser-Sync:
+
+Use this command:
+
+```bash
+npm install -g browser-sync
+```
+
+---
+
 ### Step 3. Running and testing:
 
-Open terminal and navigate to the cloned folder or vice-versa and then paste the following command.
+Open terminal, navigate to the cloned project folder, and start the PHP server:
 
 ```bash
 php -S localhost:8000
 ```
 
-Then, in another window of terminal and navigate back to the cloned folder or vice-versa and then paste the following command.
+In another terminal window, navigate to the same folder and start Browser-Sync:
 
 ```bash
 browser-sync start --proxy "localhost:8000"
 ```
 
-Then, in browser navigate to the footer of the index file and fill the form as required and submit.<br>
-After a moment, you will get a browser alert that the email is sent and you will receive a copy of your response.
+Now, open your browser and scroll to the footer of the `index.html` page.  
+Fill in the form and submit.  
+A browser alert will confirm the message was sent.  
+You will receive a confirmation email as well.
 
-## For MacOS/Linux:-
+### To view stored submissions in the database:
 
-### We unfortunately don't have any members with these operating systems so, we can't help you at the moment.
+Run the following in terminal:
 
-## For any problem during the preceding process contact one of the following:
+```bash
+mysql -u root -p
+```
 
-<ul>
-    <li>terncoders@gmail.com</li>
-</ul>
+Then:
+
+```sql
+USE contact_form;
+SELECT * FROM messages;
+```
+
+---
+
+## For MacOS/Linux:
+
+We unfortunately don’t have contributors with these operating systems yet, so we cannot offer help at this time.
+
+---
+
+## For any issues, contact:
+
+- [terncoders@gmail.com](mailto:terncoders@gmail.com)
