@@ -14,26 +14,26 @@ $phone = sanitize_input($_POST["phone"] ?? '');
 $subject = sanitize_input($_POST["subject"] ?? '');
 $message = nl2br(sanitize_input($_POST["message"] ?? ''));
 $errors = [];
-if (empty($name)) $name = "Name Not Given";
+if (empty($name)) $name = "(Name Not Given)";
 if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errors[] = "Invalid email address.";
 }
 if (empty($phone)) {
-    $phone = "Phone Number Not Given"; 
+    $phone = "Not Given"; 
 } elseif (!preg_match('/^[6-9]\d{9}$/', $phone)) {
     $errors[] = "Phone number must be a valid 10-digit Indian mobile number starting with 6-9.";
 }
 if (empty($subject)) {
     $errors[] = "Subject is required.";
 }
-if (empty($message)) $message = "Message Not Given";
+if (empty($message)) $message = "(Message Not Given)";
 if (!empty($errors)) {
     $query = http_build_query(['errors' => $errors]);
     header("Location: contact.php?$query");
     exit;
 }
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=contact_form;charset=utf8", "root", "(your_password)");
+    $pdo = new PDO("mysql:host=localhost;dbname=contact_form;charset=utf8", "root", "b#P$3L8jQoR*5uVp");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $pdo->prepare("INSERT INTO messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([$name, $email, $phone, $subject, strip_tags($message)]);
