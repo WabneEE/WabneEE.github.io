@@ -326,7 +326,7 @@ section {
 .floating-icons2 span {
   position: absolute;
   font-size: 3vw;
-  opacity: 0.1;
+  opacity: 0.35;
   z-index: 0;
   animation: rotate 2.5s infinite alternate linear;
 }
@@ -339,36 +339,36 @@ section {
   }
 }
 .floating-icons2 span:nth-child(1) {
-  top: 0%;
-  left: 0%;
+  top: 20%;
+  left: 30%;
 }
 .floating-icons2 span:nth-child(2) {
-  top: 0%;
-  left: 0%;
+  top: 10%;
+  left: 5%;
 }
 .floating-icons2 span:nth-child(3) {
-  top: 0%;
-  left: 0%;
+  top: 70%;
+  left: 10%;
 }
 .floating-icons2 span:nth-child(4) {
-  top: 0%;
-  left: 0%;
+  top: 30%;
+  left: 80%;
 }
 .floating-icons2 span:nth-child(5) {
-  top: 0%;
-  left: 0%;
+  top: 70%;
+  left: 75%;
 }
 .floating-icons2 span:nth-child(6) {
-  top: 0%;
-  left: 0%;
+  top: 5%;
+  left: 90%;
 }
 .floating-icons2 span:nth-child(7) {
-  top: 0%;
-  left: 0%;
+  top: 60%;
+  left: 25%;
 }
 .floating-icons2 span:nth-child(8) {
-  top: 0%;
-  left: 0%;
+  top: 85%;
+  left: 90%;
 }
 #contact-us form {
   display: flex;
@@ -569,7 +569,7 @@ section {
     margin-bottom: 10vw;
   }
   .floating-icons2 {
-    height: calc((100vh - 10vw) / 2);
+    height: calc(100vh - 10vw);
   }
   .floating-icons2 span {
     font-size: 5vw;
@@ -581,6 +581,38 @@ section {
     to {
       rotate: 15deg;
     }
+  }
+  .floating-icons2 span:nth-child(1) {
+    top: 20%;
+    left: 30%;
+  }
+  .floating-icons2 span:nth-child(2) {
+    top: 10%;
+    left: 5%;
+  }
+  .floating-icons2 span:nth-child(3) {
+    top: 60%;
+    left: 92%;
+  }
+  .floating-icons2 span:nth-child(4) {
+    top: 4%;
+    left: 50%;
+  }
+  .floating-icons2 span:nth-child(5) {
+    top: 93.5%;
+    left: 35%;
+  }
+  .floating-icons2 span:nth-child(6) {
+    top: 5%;
+    left: 90%;
+  }
+  .floating-icons2 span:nth-child(7) {
+    top: 50%;
+    left: 3%;
+  }
+  .floating-icons2 span:nth-child(8) {
+    top: 85%;
+    left: 90%;
   }
   #contact-us form {
     width: 80vw;
