@@ -52,7 +52,10 @@ If any of them are missing, follow the steps below:
 #### Installing MySQL:
 
 - Open the `Imp packages` folder and run the MySQL `.msi` installer.
-- Choose default configuration and set a root password during setup.
+- Choose custom and click next.
+- Then go MySQL Servers > MySQL Server > MySQL Server 8.0 and choose the topmost latest version and click the top green arrow to add.
+- Then go Applications > MySQL Workbench > MySQL Workbench 8.0 and choose the topmost latest version and click the same top green arrow to add.
+- Then click next and execute to download the chosen programs and follow up with the setup and chose your password and remember to keep it somewhere safe but accessible for yourself and complete the rest of the setup.
 - After installation, press the Windows key → search for “Environment Variables” → click **Edit the system environment variables**.
 - In **System Properties**, click **Environment Variables** → under _System Variables_, find and edit `Path`.
 - Click **New**, then **Browse** to your MySQL folder then MySQL server 8.0 folder then select the bin folder.
@@ -64,33 +67,25 @@ If any of them are missing, follow the steps below:
 $pdo = new PDO("mysql:host=localhost;dbname=contact_form;charset=utf8", "root", "(your_password)");
 ```
 
-Then open terminal and create the database and table:
+Then open MySQL workbench and choose local instance under MySQL connection and sign in with your chosen password.
 
-```bash
-mysql -u root -p
-```
-
-Enter your MySQL root password, then:
+Then, paste the following into query 1 and click the thunderbolt to execute:
 
 ```sql
 CREATE DATABASE contact_form;
 USE contact_form;
 CREATE TABLE messages (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) DEFAULT 'Not_Given',
+    name VARCHAR(255) DEFAULT 'Not Given',
     email VARCHAR(255) NOT NULL,
-    phone VARCHAR(10) DEFAULT 'Not_Given',
+    phone VARCHAR(10) DEFAULT 'Not Given',
     subject VARCHAR(255) NOT NULL,
     message TEXT,
     submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
-Exit MySQL:
-
-```sql
-exit;
-```
+Then, close the program and go to the next part.
 
 #### Then verify Composer and Browser-Sync:
 
@@ -120,8 +115,6 @@ Use this command:
 npm install -g browser-sync
 ```
 
----
-
 ### Step 3. Running and testing:
 
 Open terminal, navigate to the cloned project folder, and start the PHP server:
@@ -143,28 +136,20 @@ You will receive a confirmation email as well.
 
 ### To view stored submissions in the database:
 
-#### Option 1 : Direct through terminal (May provide bad result interface)
-
-Run the following in terminal:
-
-```bash
-mysql -u root -p
-```
-
-Enter your password and sign in, Then:
+Login again to MySQL Workbench and paste the following by replacing the code that was used to create the databse and table as it is already executed:
 
 ```sql
 USE contact_form;
 SELECT * FROM messages;
 ```
 
-#### Option 2 : Using MySQL Workbench (Better interface but more tedious to set up)
+Then click the thunderbolt button ad you will able to view stored submissions.
+
+**Tip:** To maximise the view of stored submissions close the three sidebars by using the three buttons on top right.
 
 ## For MacOS/Linux:
 
 We unfortunately don’t have contributors with these operating systems yet, so we cannot offer help at this time.
-
----
 
 ## For any issues, contact:
 
