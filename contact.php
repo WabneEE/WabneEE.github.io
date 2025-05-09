@@ -33,7 +33,7 @@ if (!empty($errors)) {
     exit;
 }
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=contact_form;charset=utf8", "root", "(your_password)");
+    $pdo = new PDO("mysql:host=localhost;dbname=contact_form;charset=utf8", "root", "b#P3L8jQoR*5uVp");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $pdo->prepare("INSERT INTO messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([$name, $email, $phone, $subject, strip_tags($message)]);
