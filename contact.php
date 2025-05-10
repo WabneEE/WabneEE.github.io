@@ -1,79 +1,84 @@
 <?php
-require 'vendor/autoload.php';
+require "vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-function sanitize_input($data) {
-    return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+function sanitize_input($data)
+{
+	return htmlspecialchars(trim($data), ENT_QUOTES, "UTF-8");
 }
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    return;
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+	return;
 }
-$name = sanitize_input($_POST["name"] ?? '');
-$email = sanitize_input($_POST["email"] ?? '');
-$phone = sanitize_input($_POST["phone"] ?? '');
-$subject = sanitize_input($_POST["subject"] ?? '');
-$message = nl2br(sanitize_input($_POST["message"] ?? ''));
+$name = sanitize_input($_POST["name"] ?? "");
+$email = sanitize_input($_POST["email"] ?? "");
+$phone = sanitize_input($_POST["phone"] ?? "");
+$subject = sanitize_input($_POST["subject"] ?? "");
+$message = nl2br(sanitize_input($_POST["message"] ?? ""));
 $errors = [];
-if (empty($name)) $name = "(Name Not Given)";
+if (empty($name)) {
+	$name = "(Name Not Given)";
+}
 if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $errors[] = "Invalid email address.";
+	$errors[] = "Invalid email address.";
 }
 if (empty($phone)) {
-    $phone = "Not Given"; 
+	$phone = "Not Given";
 } elseif (!preg_match('/^[6-9]\d{9}$/', $phone)) {
-    $errors[] = "Phone number must be a valid 10-digit Indian mobile number starting with 6-9.";
+	$errors[] = "Phone number must be a valid 10-digit Indian mobile number starting with 6-9.";
 }
 if (empty($subject)) {
-    $errors[] = "Subject is required.";
+	$errors[] = "Subject is required.";
 }
-if (empty($message)) $message = "(Message Not Given)";
+if (empty($message)) {
+	$message = "(Message Not Given)";
+}
 if (!empty($errors)) {
-    $query = http_build_query(['errors' => $errors]);
-    header("Location: contact.php?$query");
-    exit;
+	$query = http_build_query(["errors" => $errors]);
+	header("Location: contact.php?$query");
+	exit();
 }
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=contact_form;charset=utf8", "root", "b#P3L8jQoR*5uVp");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $pdo->prepare("INSERT INTO messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)");
-    $stmt->execute([$name, $email, $phone, $subject, strip_tags($message)]);
+	$pdo = new PDO("mysql:host=localhost;dbname=contact_form;charset=utf8", "root", "b#P3L8jQoR*5uVp");
+	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$stmt = $pdo->prepare("INSERT INTO messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)");
+	$stmt->execute([$name, $email, $phone, $subject, strip_tags($message)]);
 } catch (PDOException $e) {
-    die("PDO Error: " . $e->getMessage());
+	die("PDO Error: " . $e->getMessage());
 }
 try {
-    $mail = new PHPMailer(true);
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'terncoders@gmail.com';
-    $mail->Password = 'tllfxoykrhnsraqk';
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = 587;
-    $mail->setFrom('terncoders@gmail.com', 'TernCoders');
-    $mail->addAddress('terncoders@gmail.com');
-    $mail->isHTML(true);
-    $mail->Subject = $subject;
-    $mail->Body = "You have received a message from <b>$name</b> ($email)(Number:$phone):<br><br>$message";
-    $mail->send();
+	$mail = new PHPMailer(true);
+	$mail->isSMTP();
+	$mail->Host = "smtp.gmail.com";
+	$mail->SMTPAuth = true;
+	$mail->Username = "terncoders@gmail.com";
+	$mail->Password = "tllfxoykrhnsraqk";
+	$mail->SMTPSecure = "tls";
+	$mail->Port = 587;
+	$mail->setFrom("terncoders@gmail.com", "TernCoders");
+	$mail->addAddress("terncoders@gmail.com");
+	$mail->isHTML(true);
+	$mail->Subject = $subject;
+	$mail->Body = "You have received a message from <b>$name</b> ($email)(Number:$phone):<br><br>$message";
+	$mail->send();
 } catch (Exception $e) {
-    echo "<script>alert('Mailer Error while sending to admin: {$mail->ErrorInfo}'); window.location.href='index.html';</script>";
-    exit;
+	echo "<script>alert('Mailer Error while sending to admin: {$mail->ErrorInfo}'); window.location.href='index.html';</script>";
+	exit();
 }
 try {
-    $userMail = new PHPMailer(true);
-    $userMail->isSMTP();
-    $userMail->Host = 'smtp.gmail.com';
-    $userMail->SMTPAuth = true;
-    $userMail->Username = 'terncoders@gmail.com';
-    $userMail->Password = 'tllfxoykrhnsraqk';
-    $userMail->SMTPSecure = 'tls';
-    $userMail->Port = 587;
-    $userMail->setFrom('terncoders@gmail.com', 'TernCoders');
-    $userMail->addAddress($email);
-    $userMail->isHTML(true);
-    $userMail->Subject = "Confirmation Email for $name's Submission";
-    $userMail->AddEmbeddedImage("mailimgae.jpg", "headerImage", "Header Image");
-    $userMail->Body = <<<HTML
+	$userMail = new PHPMailer(true);
+	$userMail->isSMTP();
+	$userMail->Host = "smtp.gmail.com";
+	$userMail->SMTPAuth = true;
+	$userMail->Username = "terncoders@gmail.com";
+	$userMail->Password = "tllfxoykrhnsraqk";
+	$userMail->SMTPSecure = "tls";
+	$userMail->Port = 587;
+	$userMail->setFrom("terncoders@gmail.com", "TernCoders");
+	$userMail->addAddress($email);
+	$userMail->isHTML(true);
+	$userMail->Subject = "Confirmation Email for $name's Submission";
+	$userMail->AddEmbeddedImage("mailimgae.jpg", "headerImage", "Header Image");
+	$userMail->Body = <<<HTML
 <html>
   <head>
     <style>
@@ -148,10 +153,10 @@ try {
   </body>
 </html>
 HTML;
-    $userMail->send();
+	$userMail->send();
 } catch (Exception $e) {
-    echo "<script>alert('Mailer Error while sending confirmation: {$userMail->ErrorInfo}'); window.location.href='index.html';</script>";
-    exit;
+	echo "<script>alert('Mailer Error while sending confirmation: {$userMail->ErrorInfo}'); window.location.href='index.html';</script>";
+	exit();
 }
 echo "<script>alert('Message sent successfully! A confirmation has been sent to your email.'); window.location.href='index.html';</script>";
 ?>

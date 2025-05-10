@@ -437,6 +437,9 @@ section {
 #contact-us button:hover {
   background-color: #0056b3;
 }
+.log {
+  margin-top: 5vw !important;
+}
 @media (orientation: portrait) {
   html {
     scroll-padding-top: 10vw;
@@ -635,5 +638,8 @@ section {
   #contact-us button {
     font-size: 5vw;
     height: 10vw;
+  }
+  .log {
+    margin-top: 10vw !important;
   }
 }
