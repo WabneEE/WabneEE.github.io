@@ -1,25 +1,25 @@
 <?php
-require "vendor/autoload.php";
+require 'vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
-$pdo = new PDO("mysql:host=localhost;dbname=login_db", "root", "b#P3L8jQoR*5uVp");
-$success = "";
-$error = "";
-if (isset($_POST["verify"])) {
-	$email = $_POST["email"] ?? "";
-	$otp = $_POST["otp"] ?? "";
-	if ($email && $otp) {
-		$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND otp = ?");
-		$stmt->execute([$email, $otp]);
-		if ($stmt->rowCount() > 0) {
-			$update = $pdo->prepare("UPDATE users SET email_verified = 1, otp = NULL WHERE email = ?");
-			$update->execute([$email]);
-			$success = "Email verified successfully! You can now login.";
-		} else {
-			$error = "Invalid OTP or email.";
-		}
-	} else {
-		$error = "Both fields are required.";
-	}
+$pdo = new PDO('mysql:host=localhost;dbname=login_db', 'root', 'b#P3L8jQoR*5uVp');
+$success = '';
+$error = '';
+if (isset($_POST['verify'])) {
+    $email = $_POST['email'] ?? '';
+    $otp = $_POST['otp'] ?? '';
+    if ($email && $otp) {
+        $stmt = $pdo->prepare('SELECT * FROM users WHERE email = ? AND otp = ?');
+        $stmt->execute([$email, $otp]);
+        if ($stmt->rowCount() > 0) {
+            $update = $pdo->prepare('UPDATE users SET email_verified = 1, otp = NULL WHERE email = ?');
+            $update->execute([$email]);
+            $success = 'Email verified successfully! You can now login.';
+        } else {
+            $error = 'Invalid OTP or email.';
+        }
+    } else {
+        $error = 'Both fields are required.';
+    }
 }
 ?>
 <!doctype html>

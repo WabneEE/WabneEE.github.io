@@ -1,99 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>TernCoders</title>
-		<link rel="stylesheet" href="style.css" />
-		<script src="script.js" defer></script>
-		<link rel="shortcut icon" href="favicon.gif" type="image/x-icon" />
-	</head>
-	<body>
-		<nav>
-			<a href="index.html"> <img src="favicon.gif" alt="Logo" class="logo" /></a>
-			<ul class="nav-menu">
-				<li><a href="index.html" class="nav-link">Home</a></li>
-				<li><a href="#courses" class="nav-link">Courses</a></li>
-				<li><a href="#pricing" class="nav-link">Pricing</a></li>
-				<li><a href="#about-us" class="nav-link">About Us</a></li>
-				<li><a href="#contact-us" class="nav-link">Contact Us</a></li>
-				<li>
-					<button class="nav-btn nav-btn-link">
-						<a href="auth.php">Log In</a>
-					</button>
-				</li>
-			</ul>
-			<div class="hamburger">
-				<span class="bar"></span>
-				<span class="bar"></span>
-				<span class="bar"></span>
-			</div>
-		</nav>
-		<section id="home">
-			<h1 class="head-text">
-				Your <span class="head-underline">Foremost</span> platform
-				<br />
-				for education
-			</h1>
-			<h3 class="head-subtext">
-				We are here to give you every resource,<br />nurture you, and prepare you as an excelling <br />
-				student, and accelerate your learning.
-			</h3>
-			<div class="floating-icons">
-				<span>📘</span>
-				<span>💻</span>
-				<span>✏️</span>
-				<span>📚</span>
-				<span>🎨</span>
-				<span>🧪</span>
-				<span>🌏</span>
-				<span>📝</span>
-			</div>
-		</section>
-		<section id="about-us">
-			<div class="floating-shapes">
-				<span class="shape shape1"></span>
-				<span class="shape shape2"></span>
-				<span class="shape shape3"></span>
-			</div>
-			<div class="about-content">
-				<h1>About Us</h1>
-				<p>
-					We are a forward-thinking team committed to innovation and excellence. Our mission is to deliver top-quality
-					services and solutions to our clients worldwide.
-				</p>
-			</div>
-		</section>
-		<section id="contact-us">
-			<h1>Contact Us</h1>
-			<div class="floating-icons2">
-				<span>📬</span>
-				<span>📞</span>
-				<span>📧</span>
-				<span>💬</span>
-				<span>📱</span>
-				<span>📨</span>
-				<span>🗨️</span>
-				<span>✉️</span>
-			</div>
-			<form action="contact.php" method="post">
-				<label>
-					<input type="text" name="name" placeholder="Your Name" />
-				</label>
-				<label>
-					<input type="email" name="email" placeholder="Your Email" required />
-				</label>
-				<label>
-					<input type="number" name="phone" placeholder="Phone" />
-				</label>
-				<label>
-					<input type="text" name="subject" placeholder="Subject" required />
-				</label>
-				<label>
-					<textarea name="message" placeholder="Your Message"></textarea>
-				</label>
-				<button type="submit" name="submit">Send</button>
-			</form>
-		</section>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TernCoders</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link rel="shortcut icon" href="favicon.gif" type="image/x-icon" />
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="favicon.gif" alt="Logo" class="logo"
+      /></a>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#courses" class="nav-link">Courses</a></li>
+        <li><a href="#pricing" class="nav-link">Pricing</a></li>
+        <li><a href="#about-us" class="nav-link">About Us</a></li>
+        <li><a href="#contact-us" class="nav-link">Contact Us</a></li>
+        <li>
+          <button class="nav-btn nav-btn-link">
+            <a href="auth.php">Log In</a>
+          </button>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+    <section id="home">
+      <h1 class="head-text">
+        Your <span class="head-underline">Foremost</span> platform
+        <br />
+        for education
+      </h1>
+      <h3 class="head-subtext">
+        We are here to give you every resource,<br />nurture you, and prepare
+        you as an excelling <br />
+        student, and accelerate your learning.
+      </h3>
+      <div class="floating-icons">
+        <span>📘</span>
+        <span>💻</span>
+        <span>✏️</span>
+        <span>📚</span>
+        <span>🎨</span>
+        <span>🧪</span>
+        <span>🌏</span>
+        <span>📝</span>
+      </div>
+    </section>
+    <section id="about-us">
+      <div class="floating-shapes">
+        <span class="shape shape1"></span>
+        <span class="shape shape2"></span>
+        <span class="shape shape3"></span>
+      </div>
+      <div class="about-content">
+        <h1>About Us</h1>
+        <p>
+          We are a forward-thinking team committed to innovation and excellence.
+          Our mission is to deliver top-quality services and solutions to our
+          clients worldwide.
+        </p>
+      </div>
+    </section>
+    <section id="contact-us">
+      <h1>Contact Us</h1>
+      <div class="floating-icons2">
+        <span>📬</span>
+        <span>📞</span>
+        <span>📧</span>
+        <span>💬</span>
+        <span>📱</span>
+        <span>📨</span>
+        <span>🗨️</span>
+        <span>✉️</span>
+      </div>
+      <form action="contact.php" method="post">
+        <label>
+          <input type="text" name="name" placeholder="Your Name" />
+        </label>
+        <label>
+          <input type="email" name="email" placeholder="Your Email" required />
+        </label>
+        <label>
+          <input type="number" name="phone" placeholder="Phone" />
+        </label>
+        <label>
+          <input type="text" name="subject" placeholder="Subject" required />
+        </label>
+        <label>
+          <textarea name="message" placeholder="Your Message"></textarea>
+        </label>
+        <button type="submit" name="submit">Send</button>
+      </form>
+    </section>
+  </body>
 </html>

@@ -1,36 +1,36 @@
 <?php
 session_start();
-$pdo = new PDO("mysql:host=localhost;dbname=login_db", "root", "b#P3L8jQoR*5uVp");
-if (!isset($_SESSION["user"])) {
-    header("Location: auth.php");
+$pdo = new PDO('mysql:host=localhost;dbname=login_db', 'root', 'b#P3L8jQoR*5uVp');
+if (!isset($_SESSION['user'])) {
+    header('Location: auth.php');
     exit();
 }
-$username = $_SESSION["user"];
-$result = "";
-if (isset($_POST["logout"])) {
+$username = $_SESSION['user'];
+$result = '';
+if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
-    header("Location: auth.php");
+    header('Location: auth.php');
     exit();
 }
-if (isset($_POST["delete"])) {
-    $password = $_POST["password"] ?? "";
+if (isset($_POST['delete'])) {
+    $password = $_POST['password'] ?? '';
     if ($password) {
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+        $stmt = $pdo->prepare('SELECT * FROM users WHERE username = ?');
         $stmt->execute([$username]);
         $user = $stmt->fetch();
-        if ($user && password_verify($password, $user["password_hash"])) {
-            $delete = $pdo->prepare("DELETE FROM users WHERE username = ?");
+        if ($user && password_verify($password, $user['password_hash'])) {
+            $delete = $pdo->prepare('DELETE FROM users WHERE username = ?');
             $delete->execute([$username]);
             session_unset();
             session_destroy();
-            header("Location: auth.php");
+            header('Location: auth.php');
             exit();
         } else {
-            $result = "Invalid password. Account not deleted.";
+            $result = 'Invalid password. Account not deleted.';
         }
     } else {
-        $result = "Password is required.";
+        $result = 'Password is required.';
     }
 }
 ?>
