@@ -4,8 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 $pdo = new PDO("mysql:host=localhost;dbname=login_db", "root", "b#P3L8jQoR*5uVp");
 $success = "";
 $error = "";
-function sendResetOTP($email, $otp)
-{
+function sendResetOTP($email, $otp) {
 	$mail = new PHPMailer(true);
 	$mail->isSMTP();
 	$mail->Host = "smtp.gmail.com";
@@ -24,17 +23,16 @@ function sendResetOTP($email, $otp)
 if (isset($_POST["send_otp"])) {
 	$email = $_POST["email"] ?? "";
 	if ($email) {
-		$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+		$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND email_verified = 1");
 		$stmt->execute([$email]);
-		$user = $stmt->fetch();
-		if ($user && $user["email_verified"]) {
+		if ($stmt->rowCount() > 0) {
 			$otp = rand(100000, 999999);
 			$update = $pdo->prepare("UPDATE users SET otp = ? WHERE email = ?");
 			$update->execute([$otp, $email]);
 			sendResetOTP($email, $otp);
 			$success = "OTP sent to your email.";
 		} else {
-			$error = "Invalid or unverified email.";
+			$error = "Email not found or not verified.";
 		}
 	} else {
 		$error = "Email is required.";
@@ -47,12 +45,11 @@ if (isset($_POST["reset_password"])) {
 	if ($email && $otp && $new_password) {
 		$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND otp = ?");
 		$stmt->execute([$email, $otp]);
-		$user = $stmt->fetch();
-		if ($user) {
+		if ($stmt->rowCount() > 0) {
 			$password_hash = password_hash($new_password, PASSWORD_DEFAULT);
 			$update = $pdo->prepare("UPDATE users SET password_hash = ?, otp = NULL WHERE email = ?");
 			$update->execute([$password_hash, $email]);
-			$success = "Password reset successfully.";
+			$success = "Password reset successfully. You can now login.";
 		} else {
 			$error = "Invalid OTP.";
 		}
@@ -91,16 +88,17 @@ if (isset($_POST["reset_password"])) {
 			</div>
 		</nav>
 		<section class="reset log">
-			<form>
+			<form method="POST">
 				<h2>Send OTP</h2>
-				<input type="email" placeholder="Email" required />
-				<button type="submit">Send OTP</button>
+				<input type="email" name="email" placeholder="Your Verified Email" required />
+				<button type="submit" name="send_otp">Send OTP</button>
 			</form>
-			<form>
+			<form method="POST">
 				<h2>Reset Password</h2>
-				<input type="number" placeholder="Enter OTP" required />
-				<input type="password" placeholder="New Password" required />
-				<button type="submit">Reset</button>
+				<input type="email" name="email" placeholder="Your Email" required />
+				<input type="number" name="otp" placeholder="Enter OTP" required />
+				<input type="password" name="new_password" placeholder="New Password" required />
+				<button type="submit" name="reset_password">Reset Password</button>
 			</form>
 		</section>
 	</body>

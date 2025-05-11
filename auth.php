@@ -4,8 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 $pdo = new PDO("mysql:host=localhost;dbname=login_db", "root", "b#P3L8jQoR*5uVp");
 $success = "";
 $error = "";
-function sendVerificationEmail($email, $otp)
-{
+function sendVerificationEmail($email, $otp) {
 	$mail = new PHPMailer(true);
 	$mail->isSMTP();
 	$mail->Host = "smtp.gmail.com";
@@ -31,7 +30,7 @@ if (isset($_POST["register"])) {
 		if ($stmt->rowCount() == 0) {
 			$otp = rand(100000, 999999);
 			$password_hash = password_hash($password, PASSWORD_DEFAULT);
-			$insert = $pdo->prepare("INSERT INTO users (email, password_hash, otp, username) VALUES (?, ?, ?, ?)");
+			$insert = $pdo->prepare("INSERT INTO users (email, password_hash, otp, username, email_verified) VALUES (?, ?, ?, ?, 0)");
 			$insert->execute([$email, $password_hash, $otp, $username]);
 			sendVerificationEmail($email, $otp);
 			$success = "Account created! Check your email for the OTP.";
@@ -40,6 +39,29 @@ if (isset($_POST["register"])) {
 		}
 	} else {
 		$error = "All fields are required.";
+	}
+}
+if (isset($_POST["login"])) {
+	$email = $_POST["email"] ?? "";
+	$password = $_POST["password"] ?? "";
+	if ($email && $password) {
+		$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+		$stmt->execute([$email]);
+		$user = $stmt->fetch();
+		if ($user && password_verify($password, $user["password_hash"])) {
+			if ($user["email_verified"] == 1) {
+				session_start();
+				$_SESSION["user"] = $user["username"];
+				header("Location: dashboard.php");
+				exit();
+			} else {
+				$error = "Please verify your email first.";
+			}
+		} else {
+			$error = "Invalid email or password.";
+		}
+	} else {
+		$error = "Both fields are required.";
 	}
 }
 ?>
@@ -73,18 +95,18 @@ if (isset($_POST["register"])) {
 			</div>
 		</nav>
 		<section class="auth log">
-			<form>
+			<form method="POST">
 				<h2>Login</h2>
-				<input type="email" placeholder="Email" required />
-				<input type="password" placeholder="Password" required />
-				<button type="submit">Login</button>
+				<input type="email" name="email" placeholder="Email" required />
+				<input type="password" name="password" placeholder="Password" required />
+				<button type="submit" name="login">Login</button>
 			</form>
-			<form>
+			<form method="POST">
 				<h2>Register</h2>
-				<input type="text" placeholder="Full Name" required />
-				<input type="email" placeholder="Email" required />
-				<input type="password" placeholder="Password" required />
-				<button type="submit">Register</button>
+				<input type="text" name="username" placeholder="Username" required />
+				<input type="email" name="email" placeholder="Email" required />
+				<input type="password" name="password" placeholder="Password" required />
+				<button type="submit" name="register">Register</button>
 			</form>
 		</section>
 	</body>

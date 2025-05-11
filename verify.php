@@ -13,7 +13,7 @@ if (isset($_POST["verify"])) {
 		if ($stmt->rowCount() > 0) {
 			$update = $pdo->prepare("UPDATE users SET email_verified = 1, otp = NULL WHERE email = ?");
 			$update->execute([$email]);
-			$success = "Email verified successfully!";
+			$success = "Email verified successfully! You can now login.";
 		} else {
 			$error = "Invalid OTP or email.";
 		}
@@ -52,10 +52,11 @@ if (isset($_POST["verify"])) {
 			</div>
 		</nav>
 		<section class="verify log">
-			<form>
+			<form method="POST">
 				<h2>Verify OTP</h2>
-				<input type="number" placeholder="Enter OTP" required />
-				<button type="submit">Verify</button>
+				<input type="email" name="email" placeholder="Your Email" required />
+				<input type="number" name="otp" placeholder="Enter OTP" required />
+				<button type="submit" name="verify">Verify</button>
 			</form>
 		</section>
 	</body>
