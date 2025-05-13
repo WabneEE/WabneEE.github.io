@@ -1,63 +1,65 @@
 <?php
-require 'vendor/autoload.php';
-use PHPMailer\PHPMailer\PHPMailer;
-$pdo = new PDO('mysql:host=localhost;dbname=login_db', 'root', 'b#P3L8jQoR*5uVp');
-$success = '';
-$error = '';
-if (isset($_POST['verify'])) {
-    $email = $_POST['email'] ?? '';
-    $otp = $_POST['otp'] ?? '';
-    if ($email && $otp) {
-        $stmt = $pdo->prepare('SELECT * FROM users WHERE email = ? AND otp = ?');
-        $stmt->execute([$email, $otp]);
-        if ($stmt->rowCount() > 0) {
-            $update = $pdo->prepare('UPDATE users SET email_verified = 1, otp = NULL WHERE email = ?');
-            $update->execute([$email]);
-            $success = 'Email verified successfully! You can now login.';
-        } else {
-            $error = 'Invalid OTP or email.';
-        }
-    } else {
-        $error = 'Both fields are required.';
-    }
+$purpose = "";
+if (isset($_GET["register"])) {
+	$purpose = "Account Creation";
+}
+if (isset($_GET["reset"])) {
+	$purpose = "Password Reset";
+}
+if (isset($_GET["delete"])) {
+	$purpose = "Account Deletion";
+}
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+	if ($_POST["otp"] == $_COOKIE["otp"]) {
+		$email = $_COOKIE["email"];
+		if ($purpose === "Account Creation") {
+			echo "<h3>Account successfully created for $email!</h3>";
+		} elseif ($purpose === "Password Reset") {
+			echo "<h3>Password reset successful for $email!</h3>";
+		} elseif ($purpose === "Account Deletion") {
+			echo "<h3>Account $email successfully deleted.</h3>";
+		}
+		setcookie("otp", "", time() - 3600, "/");
+		setcookie("email", "", time() - 3600, "/");
+		exit();
+	} else {
+		echo "<h3>Invalid OTP. Please try again.</h3>";
+	}
 }
 ?>
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
-		<title>TernCoders - Verify OTP</title>
+		<meta charset="UTF-8" />
+		<title>TernCoders - Verify</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="style.css" />
 		<script src="script.js" defer></script>
-		<link rel="shortcut icon" href="favicon.gif" type="image/x-icon" />
+		<link rel="icon" href="favicon.gif" type="image/gif" />
 	</head>
 	<body>
 		<nav>
-			<a href="index.html"> <img src="favicon.gif" alt="Logo" class="logo" /></a>
+			<a href="index.html"><img src="favicon.gif" alt="Logo" class="logo" /></a>
 			<ul class="nav-menu">
-				<li><a href="index.html" class="nav-link">Home</a></li>
-				<li><a href="#courses" class="nav-link">Courses</a></li>
-				<li><a href="#pricing" class="nav-link">Pricing</a></li>
-				<li><a href="#about-us" class="nav-link">About Us</a></li>
-				<li><a href="#contact-us" class="nav-link">Contact Us</a></li>
+				<li><a href="index.html#home" class="nav-link">Home</a></li>
+				<li><a href="index.html#courses" class="nav-link">Courses</a></li>
+				<li><a href="index.html#about-us" class="nav-link">About Us</a></li>
+				<li><a href="index.html#contact-us" class="nav-link">Contact Us</a></li>
 				<li>
-					<button class="nav-btn nav-btn-link">
-						<a href="auth.php">Log In</a>
-					</button>
+					<form method="post" style="display: inline">
+						<button class="nav-btn nav-btn-link" name="logout">Log Out</button
+						><label><input type="checkbox" onclick="togglePasswordVisibility('password', this)" /> Show Password</label
+						><label><input type="checkbox" name="remember" /> Remember Me</label>
+					</form>
 				</li>
 			</ul>
-			<div class="hamburger">
-				<span class="bar"></span>
-				<span class="bar"></span>
-				<span class="bar"></span>
-			</div>
+			<div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
 		</nav>
-		<section class="verify log">
-			<form method="POST">
-				<h2>Verify OTP</h2>
-				<input type="email" name="email" placeholder="Your Email" required />
-				<input type="number" name="otp" placeholder="Enter OTP" required />
-				<button type="submit" name="verify">Verify</button>
-			</form>
-		</section>
+		<secton class="log verify">
+		<form method="POST">
+			<label>Enter OTP sent to your email:</label>
+			<input type="text" name="otp" required />
+			<button type="submit">Verify</button>
+		</form></secton>
 	</body>
 </html>

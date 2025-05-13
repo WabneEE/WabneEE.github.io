@@ -126,7 +126,7 @@ php -S localhost:8000
 In another terminal window, navigate to the same folder and start Browser-Sync:
 
 ```bash
-browser-sync start --proxy "localhost:8000"
+browser-sync start --proxy "localhost:8000" --files "**/*"
 ```
 
 Now, open your browser and scroll to the footer of the `index.html` page.  

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+		<style>
+			@import url("https://fonts.googleapis.com/css?family=Roboto:300");
+			body {
+				margin: 0;
+				padding: 0;
+				font-family: "Roboto", sans-serif !important;
+				overflow: hidden;
+				display: grid;
+				align-items: center;
+				height: 100vh;
+			}
+			section {
+				width: 100%;
+				height: fit-content;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+			.card {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				width: 25vw;
+				height: 85vh;
+				padding: 2.5vw;
+				background: linear-gradient(-45deg, #fe0847, #feae3f);
+				border-radius: 1.25vw;
+				margin: 0 auto;
+				-webkit-box-shadow: 0 1vw 1.5vw rgba(0, 0, 0, 0.1);
+				box-shadow: 0 1vw 1.5vw rgba(0, 0, 0, 0.1);
+				-webkit-transition: 0.5s;
+				transition: 0.5s;
+			}
+			.card:hover {
+				-webkit-transform: scale(1.1);
+				transform: scale(1.1);
+			}
+			.col-sm-4:nth-child(1) .card,
+			.col-sm-4:nth-child(1) .card .title .fa {
+				background: linear-gradient(-45deg, #f403d1, #64b5f6);
+			}
+			.col-sm-4:nth-child(2) .card,
+			.col-sm-4:nth-child(2) .card .title .fa {
+				background: linear-gradient(-45deg, #ffec61, #f321d7);
+			}
+			.col-sm-4:nth-child(3) .card,
+			.col-sm-4:nth-child(3) .card .title .fa {
+				background: linear-gradient(-45deg, #24ff72, #9a4eff);
+			}
+			.card::before {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 40%;
+				background: rgba(255, 255, 255, 0.1);
+				z-index: 1;
+				-webkit-transform: skewY(-5deg) scale(1.5);
+				transform: skewY(-5deg) scale(1.5);
+			}
+			.title .fa {
+				color: #fff;
+				font-size: 5vw;
+				width: 8.5vw;
+				height: 8.5vw;
+				border-radius: 50%;
+				text-align: center;
+				line-height: 8.5vw;
+				-webkit-box-shadow: 0 1vw 1.5vw rgba(0, 0, 0, 0.1);
+				box-shadow: 0 1vw 1.5vw rgba(0, 0, 0, 0.1);
+			}
+			.title h2 {
+				position: relative;
+				margin: 1.5vw 0 0;
+				padding: 0;
+				color: #fff;
+				font-size: 2.25vw;
+				z-index: 2;
+			}
+			.option {
+				position: relative;
+				z-index: 2;
+			}
+			.option ul {
+				margin: 0;
+				padding: 0;
+			}
+			.option ul li {
+				margin: 0 0 1vw;
+				padding: 0;
+				list-style: none;
+				color: #fff;
+				font-size: 1.5vw;
+			}
+			.card a {
+				position: relative;
+				z-index: 2;
+				background: #fff;
+				color: black;
+				width: 15vw;
+				height: 3.5vw;
+				line-height: 3.5vw;
+				border-radius: 3.5vw;
+				display: block;
+				text-align: center;
+				margin: 2vw auto 0;
+				font-size: 1.5vw;
+				cursor: pointer;
+				-webkit-box-shadow: 0 1vw 1.5vw rgba(0, 0, 0, 0.1);
+				box-shadow: 0 1vw 1.5vw rgba(0, 0, 0, 0.1);
+			}
+			.card a:hover {
+				text-decoration: none;
+			}
+			@media (orientation: portrait) {
+			}
+		</style>
+	</head>
+	<body>
+		<section id="courses">
+			<div class="container-fluid">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="card text-center">
+								<div class="title">
+									<h2>Class 6<sup>th</sup></h2>
+								</div>
+								<div class="option">
+									<ul>
+										<li class="courses-text"><i class="fa fa-check" aria-hidden="true"></i> 10 GB Space</li>
+										<li class="courses-text"><i class="fa fa-check" aria-hidden="true"></i> 3 Domain Names</li>
+										<li class="courses-text"><i class="fa fa-check" aria-hidden="true"></i> 20 Email Address</li>
+										<li class="courses-text"><i class="fa fa-check" aria-hidden="true"></i> Live Support</li>
+									</ul>
+								</div>
+								<a href="sixth.html">Start Learning</a>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="card text-center">
+								<div class="title">
+									<h2>Class 7<sup>th</sup></h2>
+								</div>
+								<div class="option">
+									<ul>
+										<li><i class="fa fa-check" aria-hidden="true"></i> 50 GB Space</li>
+										<li><i class="fa fa-check" aria-hidden="true"></i> 5 Domain Names</li>
+										<li><i class="fa fa-check" aria-hidden="true"></i> Unlimited Email Address</li>
+										<li><i class="fa fa-check" aria-hidden="true"></i> Live Support</li>
+									</ul>
+								</div>
+								<a href="seventh.html">Start Learning</a>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="card text-center">
+								<div class="title">
+									<h2>Class 8<sup>th</sup></h2>
+								</div>
+								<div class="option">
+									<ul>
+										<li><i class="fa fa-check" aria-hidden="true"></i> Unlimited GB Space</li>
+										<li><i class="fa fa-check" aria-hidden="true"></i> 30 Domain Names</li>
+										<li><i class="fa fa-check" aria-hidden="true"></i> Unlimited Email Address</li>
+										<li><i class="fa fa-check" aria-hidden="true"></i> Live Support</li>
+									</ul>
+								</div>
+								<a href="eighth.html">Start Learning</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
