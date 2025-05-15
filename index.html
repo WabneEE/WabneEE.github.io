@@ -6,6 +6,40 @@
 		<title>TernCoders</title>
 		<link rel="stylesheet" href="style.css" />
 		<script src="script.js" defer></script>
+		<script defer>
+			function hideElements() {
+				document.getElementById("contact-us").style.display = "none";
+				document.getElementById("contact-link").style.display = "none";
+				document.getElementById("login-link").style.display = "none";
+			}
+			window.addEventListener("DOMContentLoaded", () => {
+				fetch("contact.php")
+					.then((r) => r.text())
+					.then((html) => {
+						if (!html || html.length < 20 || html.includes("<?php") || html.includes("Fatal error")) {
+							hideElements();
+						} else {
+							const iframe = document.getElementById("contact-us");
+							iframe.src = "contact.php";
+							iframe.style.display = "block";
+						}
+					})
+					.catch(() => hideElements());
+			});
+			window.addEventListener("DOMContentLoaded", () => {
+				const iframeCourses = document.getElementById("courses");
+				iframeCourses.onload = () => {
+					try {
+						const links = iframeCourses.contentDocument.querySelectorAll("a");
+						links.forEach((link) => {
+							link.setAttribute("target", "_top");
+						});
+					} catch (e) {
+						console.warn("Could not access iframe content (CORS or browser restriction).");
+					}
+				};
+			});
+		</script>
 		<link rel="shortcut icon" href="favicon.gif" type="image/x-icon" />
 	</head>
 	<body>
@@ -15,8 +49,8 @@
 				<li><a href="#home" class="nav-link">Home</a></li>
 				<li><a href="#courses" class="nav-link">Courses</a></li>
 				<li><a href="#about-us" class="nav-link">About Us</a></li>
-				<li><a href="#contact-us" class="nav-link">Contact Us</a></li>
-				<li>
+				<li><a href="#contact-us" class="nav-link" id="contact-link">Contact Us</a></li>
+				<li id="login-link">
 					<button class="nav-btn nav-btn-link">
 						<a href="auth.php">Log In</a>
 					</button>
@@ -29,32 +63,20 @@
 			</div>
 		</nav>
 		<section id="home">
-			<h1 class="head-text">
-				Your <span class="head-underline">Foremost</span> platform
-				<br />
-				for education
-			</h1>
+			<h1 class="head-text">Your <span class="head-underline">Foremost</span> platform<br />for education</h1>
 			<h3 class="head-subtext">
-				We are here to give you every resource,<br />nurture you, and prepare you as an excelling <br />
-				student, and accelerate your learning.
+				We are here to give you every resource,<br />nurture you, and prepare you as an excelling <br />student, and
+				accelerate your learning.
 			</h3>
 			<div class="floating-icons">
-				<span>📘</span>
-				<span>💻</span>
-				<span>✏️</span>
-				<span>📚</span>
-				<span>🎨</span>
-				<span>🧪</span>
-				<span>🌏</span>
-				<span>📝</span>
+				<span>📘</span><span>💻</span><span>✏️</span><span>📚</span><span>🎨</span><span>🧪</span><span>🌏</span
+				><span>📝</span>
 			</div>
 		</section>
 		<iframe src="courses.html" frameborder="0" id="courses"></iframe>
 		<section id="about-us">
 			<div class="floating-shapes">
-				<span class="shape shape1"></span>
-				<span class="shape shape2"></span>
-				<span class="shape shape3"></span>
+				<span class="shape shape1"></span><span class="shape shape2"></span><span class="shape shape3"></span>
 			</div>
 			<div class="about-content">
 				<h1>About Us</h1>
@@ -64,6 +86,6 @@
 				</p>
 			</div>
 		</section>
-		<iframe src="contact.php" frameborder="0" id="contact-us"></iframe>
+		<iframe id="contact-us" frameborder="0" style="display: none"></iframe>
 	</body>
 </html>

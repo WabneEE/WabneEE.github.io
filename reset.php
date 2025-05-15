@@ -62,6 +62,8 @@ if (isset($_POST["reset_password"])) {
 <!doctype html>
 <html>
 	<head>
+  	<meta charset="UTF-8">
+		<meta name="source" content="dynamic">
 		<link rel="stylesheet" href="style.css" />
 		<script src="script.js" defer></script>
 		<link rel="icon" href="favicon.gif" type="image/gif" />

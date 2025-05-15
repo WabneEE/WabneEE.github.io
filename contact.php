@@ -166,6 +166,7 @@ $phone_cookie = $_COOKIE["contact_phone"] ?? "";
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="source" content="dynamic">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<style>
 			@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
