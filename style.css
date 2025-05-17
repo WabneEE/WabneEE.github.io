@@ -331,7 +331,9 @@ section {
 	height: fit-content;
 }
 .header {
-	background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url("school\ img.png");
+	background-image:
+		linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+		url("school\ img.png");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

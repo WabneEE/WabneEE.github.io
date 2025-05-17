@@ -2,7 +2,11 @@
 session_start();
 require "vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
-$pdo = new PDO("mysql:host=localhost;dbname=login_db", "root", "b#P3L8jQoR*5uVp");
+$pdo = new PDO(
+	"mysql:host=localhost;dbname=login_db",
+	"root",
+	"b#P3L8jQoR*5uVp"
+);
 $error = "";
 $success = "";
 function sendOTP($email, $name)
@@ -23,26 +27,26 @@ function sendOTP($email, $name)
 	$mail->isHTML(true);
 	$mail->Subject = "Your OTP Code - TernCoders";
 	$mail->Body = <<<HTML
-		<html>
-			<head>
-				<meta charset="UTF-8" />
-				<title>OTP Verification</title>
-			</head>
-			<body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4">
-				<div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 5px">
-					<h2 style="color: #333">Hello $name,</h2>
-					<p style="font-size: 16px">Your One-Time Password (OTP) for verifying your email address is:</p>
-					<h1 style="text-align: center; color: #000">$otp</h1>
-					<p style="font-size: 14px; color: #555">
-						Please enter this code to complete your registration. This OTP is valid for a short time only.
-					</p>
-					<p style="font-size: 14px; color: #555">If you did not request this, please ignore this email.</p>
-					<br />
-					<p style="font-size: 14px">Thanks,<br /><b>TernCoders Team</b></p>
-				</div>
-			</body>
-		</html>
-	HTML;
+	<html>
+		<head>
+			<meta charset="UTF-8" />
+			<title>OTP Verification</title>
+		</head>
+		<body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4">
+			<div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 5px">
+				<h2 style="color: #333">Hello $name,</h2>
+				<p style="font-size: 16px">Your One-Time Password (OTP) for verifying your email address is:</p>
+				<h1 style="text-align: center; color: #000">$otp</h1>
+				<p style="font-size: 14px; color: #555">
+					Please enter this code to complete your registration. This OTP is valid for a short time only.
+				</p>
+				<p style="font-size: 14px; color: #555">If you did not request this, please ignore this email.</p>
+				<br />
+				<p style="font-size: 14px">Thanks,<br /><b>TernCoders Team</b></p>
+			</div>
+		</body>
+	</html>
+HTML;
 	$mail->send();
 }
 if (isset($_POST["register"])) {
@@ -54,7 +58,9 @@ if (isset($_POST["register"])) {
 		$stmt->execute([$email]);
 		if ($stmt->rowCount() == 0) {
 			$password_hash = password_hash($password, PASSWORD_DEFAULT);
-			$stmt = $pdo->prepare("INSERT INTO users (name, email, password_hash, email_verified) VALUES (?, ?, ?, 0)");
+			$stmt = $pdo->prepare(
+				"INSERT INTO users (name, email, password_hash, email_verified) VALUES (?, ?, ?, 0)"
+			);
 			$stmt->execute([$name, $email, $password_hash]);
 			sendOTP($email, $name);
 			$_SESSION["pending_verification"] = $email;
@@ -71,7 +77,9 @@ if (isset($_POST["login"])) {
 	$email = $_POST["email"] ?? "";
 	$password = $_POST["password"] ?? "";
 	if ($email && $password) {
-		$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND email_verified = 1");
+		$stmt = $pdo->prepare(
+			"SELECT * FROM users WHERE email = ? AND email_verified = 1"
+		);
 		$stmt->execute([$email]);
 		$user = $stmt->fetch();
 		if ($user && password_verify($password, $user["password_hash"])) {

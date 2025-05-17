@@ -1,7 +1,11 @@
 <?php
 require "vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
-$pdo = new PDO("mysql:host=localhost;dbname=login_db", "root", "b#P3L8jQoR*5uVp");
+$pdo = new PDO(
+	"mysql:host=localhost;dbname=login_db",
+	"root",
+	"b#P3L8jQoR*5uVp"
+);
 $success = "";
 $error = "";
 function sendResetOTP($email, $otp)
@@ -24,7 +28,9 @@ function sendResetOTP($email, $otp)
 if (isset($_POST["send_otp"])) {
 	$email = $_POST["email"] ?? "";
 	if ($email) {
-		$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND email_verified = 1");
+		$stmt = $pdo->prepare(
+			"SELECT * FROM users WHERE email = ? AND email_verified = 1"
+		);
 		$stmt->execute([$email]);
 		if ($stmt->rowCount() > 0) {
 			$otp = rand(100000, 999999);
@@ -48,7 +54,9 @@ if (isset($_POST["reset_password"])) {
 		$stmt->execute([$email, $otp]);
 		if ($stmt->rowCount() > 0) {
 			$password_hash = password_hash($new_password, PASSWORD_DEFAULT);
-			$update = $pdo->prepare("UPDATE users SET password_hash = ?, otp = NULL WHERE email = ?");
+			$update = $pdo->prepare(
+				"UPDATE users SET password_hash = ?, otp = NULL WHERE email = ?"
+			);
 			$update->execute([$password_hash, $email]);
 			$success = "Password reset successfully. You can now login.";
 		} else {

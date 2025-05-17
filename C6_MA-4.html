@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>TernCoders - Class 6 - Mental Ability - Chapter 4</title>
+		<link rel="stylesheet" href="style.css" />
+		<script defer src="script.js"></script>
+		<script defer>
+			function hideElements() {
+				const contactLink = document.getElementById("contact-link");
+				const loginLink = document.getElementById("login-link");
+				if (contactLink) contactLink.style.display = "none";
+				if (loginLink) loginLink.style.display = "none";
+			}
+			window.addEventListener("DOMContentLoaded", () => {
+				fetch("contact.php")
+					.then((r) => r.text())
+					.then((html) => {
+						if (
+							!html ||
+							html.length < 20 ||
+							html.includes("<?php") ||
+							html.includes("Fatal error")
+						) {
+							hideElements();
+						}
+					})
+					.catch(() => hideElements());
+			});
+		</script>
+		<link rel="shortcut icon" href="favicon.gif" type="image/x-icon" />
+	</head>
+	<body>
+		<nav>
+			<a href="index.html"><img src="favicon.gif" alt="Logo" class="logo" /></a>
+			<ul class="nav-menu">
+				<li><a href="index.html#home" class="nav-link">Home</a></li>
+				<li><a href="index.html#courses" class="nav-link">Courses</a></li>
+				<li><a href="index.html#about-us" class="nav-link">About Us</a></li>
+				<li
+					><a href="contact.php" class="nav-link" id="contact-link"
+						>Contact Us</a
+					></li
+				>
+				<li id="login-link">
+					<button class="nav-btn nav-btn-link">
+						<a href="auth.php">Log In</a>
+					</button>
+				</li>
+			</ul>
+			<div class="hamburger">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</div>
+		</nav>
+		<section class="chapter"></section>
+	</body>
+</html>

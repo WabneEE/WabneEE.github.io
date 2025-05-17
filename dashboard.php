@@ -6,14 +6,20 @@ if (isset($_COOKIE["remembered_email"])) {
 } ?>
 <?php
 session_start();
-$pdo = new PDO("mysql:host=localhost;dbname=login_db", "root", "b#P3L8jQoR*5uVp");
+$pdo = new PDO(
+	"mysql:host=localhost;dbname=login_db",
+	"root",
+	"b#P3L8jQoR*5uVp"
+);
 if (!isset($_SESSION["user"])) {
 	header("Location: auth.php");
 	exit();
 }
 $result = "";
 $name = "";
-$stmt = $pdo->prepare("SELECT name, email, password_hash FROM users WHERE id = ?");
+$stmt = $pdo->prepare(
+	"SELECT name, email, password_hash FROM users WHERE id = ?"
+);
 $stmt->execute([$_SESSION["user"]]);
 $user = $stmt->fetch();
 if ($user) {
@@ -33,7 +39,9 @@ if (isset($_POST["delete"])) {
 		$_SESSION["delete_email"] = $user["email"];
 		$email = $user["email"];
 		$name = $user["name"];
-		$verify_link = "http://localhost/verify.php?delete=1&token=$token&email=" . urlencode($email);
+		$verify_link =
+			"http://localhost/verify.php?delete=1&token=$token&email=" .
+			urlencode($email);
 		$subject = "Confirm Account Deletion";
 		$message = "Hi $name,\n\nClick the link below to confirm account deletion:\n$verify_link\n\nIgnore this if not intended.";
 		mail($email, $subject, $message);

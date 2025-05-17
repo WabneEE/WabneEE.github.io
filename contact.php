@@ -3,7 +3,8 @@ session_start();
 require "vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-function sanitize_input($data) {
+function sanitize_input($data)
+{
 	return htmlspecialchars(trim($data), ENT_QUOTES, "UTF-8");
 }
 $confirmationMessage = "";
@@ -22,7 +23,8 @@ if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 if (empty($phone)) {
 	$phone = "Not Given";
 } elseif (!preg_match('/^[6-9]\d{9}$/', $phone)) {
-	$errors[] = "Phone number must be a valid 10-digit Indian mobile number starting with 6-9.";
+	$errors[] =
+		"Phone number must be a valid 10-digit Indian mobile number starting with 6-9.";
 }
 if (empty($subject)) {
 	$errors[] = "Subject is required.";
@@ -31,15 +33,17 @@ if (empty($message)) {
 	$message = "(Message Not Given)";
 }
 if (empty($errors)) {
-	$host = 'localhost';
-	$user = 'root';
-	$pass = 'b#P3L8jQoR*5uVp';
-	$db = 'contact_form';
+	$host = "localhost";
+	$user = "root";
+	$pass = "b#P3L8jQoR*5uVp";
+	$db = "contact_form";
 	$conn = new mysqli($host, $user, $pass, $db);
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	$stmt = $conn->prepare("INSERT INTO messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)");
+	$stmt = $conn->prepare(
+		"INSERT INTO messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)"
+	);
 	$stmt->bind_param("sssss", $name, $email, $phone, $subject, $message);
 	if (!$stmt->execute()) {
 		echo "<script>alert('Database error: {$stmt->error}'); window.location.href='index.html';</script>";
@@ -81,73 +85,73 @@ if (empty($errors)) {
 		$userMail->Subject = "Confirmation Email for $name's Submission";
 		$userMail->AddEmbeddedImage("mailimgae.jpg", "headerImage", "Header Image");
 		$userMail->Body = <<<HTML
-		<html>
-			<head>
-				<style>
-					@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Playwrite+IT+Moderna:wght@100..400&display=swap");
-					body {
-						font-family: "Baloo Bhaijaan 2", cursive;
-						background-color: #fdf6f0;
-						color: #4b3832;
-						margin: 0;
-						padding: 0;
-						display: grid;
-						justify-content: center;
-					}
-					.card {
-						width: 60vw;
-						margin: 5vw auto;
-						border-radius: 1vw;
-						box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-					}
-					#imgil {
-						width: 100%;
-						border-radius: 1vw 1vw 0 0;
-					}
-					.content {
-						padding: 2.5vw;
-						background-color: rgba(255, 255, 255, 0.95);
-						border-radius: 0 0 1vw 1vw;
-					}
-					h2 {
-						font-size: 2.56vw;
-						color: #6d4c41;
-						text-align: center;
-						margin-top: 0;
-					}
-					p {
-						font-size: 16px;
-						line-height: 1.6;
-					}
-					ul {
-						list-style: none;
-						padding: 0;
-					}
-					ul li {
-						margin-bottom: 10px;
-					}
-				</style>
-			</head>
-			<body>
-				<div class="card">
-					<img src="cid:headerImage" alt="Header Image" id="imgil" />
-					<div class="content">
-						<p>Dear <strong>$name</strong>,</p>
-						<p>We have received your message and we truly appreciate your interest. Here is a summary of your submission:</p>
-						<ul>
-							<li><strong>Name:</strong> $name</li>
-							<li><strong>Email:</strong> $email</li>
-							<li><strong>Phone:</strong> $phone</li>
-							<li><strong>Subject:</strong> $subject</li>
-							<li><strong>Message:</strong><br />$message</li>
-						</ul>
-						<p style="text-align: center">✨ We’ll get back to you as soon as possible ✨</p>
-						<p>Warm Regards,<br />TernCoders (terncoders@gmail.com)</p>
-					</div>
-				</div>
-			</body>
-		</html>
-		HTML;
+<html>
+	<head>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Playwrite+IT+Moderna:wght@100..400&display=swap");
+			body {
+				font-family: "Baloo Bhaijaan 2", cursive;
+				background-color: #fdf6f0;
+				color: #4b3832;
+				margin: 0;
+				padding: 0;
+				display: grid;
+				justify-content: center;
+			}
+			.card {
+				width: 60vw;
+				margin: 5vw auto;
+				border-radius: 1vw;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+			}
+			#imgil {
+				width: 100%;
+				border-radius: 1vw 1vw 0 0;
+			}
+			.content {
+				padding: 2.5vw;
+				background-color: rgba(255, 255, 255, 0.95);
+				border-radius: 0 0 1vw 1vw;
+			}
+			h2 {
+				font-size: 2.56vw;
+				color: #6d4c41;
+				text-align: center;
+				margin-top: 0;
+			}
+			p {
+				font-size: 16px;
+				line-height: 1.6;
+			}
+			ul {
+				list-style: none;
+				padding: 0;
+			}
+			ul li {
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="card">
+			<img src="cid:headerImage" alt="Header Image" id="imgil" />
+			<div class="content">
+				<p>Dear <strong>$name</strong>,</p>
+				<p>We have received your message and we truly appreciate your interest. Here is a summary of your submission:</p>
+				<ul>
+					<li><strong>Name:</strong> $name</li>
+					<li><strong>Email:</strong> $email</li>
+					<li><strong>Phone:</strong> $phone</li>
+					<li><strong>Subject:</strong> $subject</li>
+					<li><strong>Message:</strong><br />$message</li>
+				</ul>
+				<p style="text-align: center">✨ We’ll get back to you as soon as possible ✨</p>
+				<p>Warm Regards,<br />TernCoders (terncoders@gmail.com)</p>
+			</div>
+		</div>
+	</body>
+</html>
+HTML;
 		$userMail->send();
 	} catch (Exception $e) {
 		echo "<script>alert('Mailer Error while sending confirmation: {$userMail->ErrorInfo}'); window.location.href='index.html';</script>";
@@ -156,7 +160,8 @@ if (empty($errors)) {
 	echo "<script>alert('Message sent successfully! A confirmation has been sent to your email.'); window.location.href='index.html';</script>";
 	exit();
 } else {
-	$confirmationMessage = "<h3 style='color:red;'>" . implode("<br>", $errors) . "</h3>";
+	$confirmationMessage =
+		"<h3 style='color:red;'>" . implode("<br>", $errors) . "</h3>";
 }
 $name_cookie = $_COOKIE["contact_name"] ?? "";
 $email_cookie = $_COOKIE["contact_email"] ?? "";
