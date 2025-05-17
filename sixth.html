@@ -1,66 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TernCoders - 7th</title>
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
-    <script defer>
-      function hideElements() {
-        const contactLink = document.getElementById("contact-link");
-        const loginLink = document.getElementById("login-link");
-        if (contactLink) contactLink.style.display = "none";
-        if (loginLink) loginLink.style.display = "none";
-      }
-      window.addEventListener("DOMContentLoaded", () => {
-        fetch("contact.php")
-          .then((r) => r.text())
-          .then((html) => {
-            if (
-              !html ||
-              html.length < 20 ||
-              html.includes("<?php") ||
-              html.includes("Fatal error")
-            ) {
-              hideElements();
-            }
-          })
-          .catch(() => hideElements());
-      });
-    </script>
-    <link rel="shortcut icon" href="favicon.gif" type="image/x-icon" />
-  </head>
-  <body>
-    <nav>
-      <a href="index.html"><img src="favicon.gif" alt="Logo" class="logo" /></a>
-      <ul class="nav-menu">
-        <li><a href="index.html#home" class="nav-link">Home</a></li>
-        <li><a href="index.html#courses" class="nav-link">Courses</a></li>
-        <li><a href="index.html#about-us" class="nav-link">About Us</a></li>
-        <li>
-          <a href="contact.php" class="nav-link" id="contact-link"
-            >Contact Us</a
-          >
-        </li>
-        <li id="login-link">
-          <button class="nav-btn nav-btn-link">
-            <a href="auth.php">Log In</a>
-          </button>
-        </li>
-      </ul>
-      <div class="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-    </nav>
-    <div class="header-7th">
-      <h1>Class 6<sup>th</sup></h1>
-    </div>
-    <section class="seventh">
-      <h1>Team TernCoders 6<sup>th</sup></h1>
-      <h2 class="sub-heading">Maths</h2>
-    </section>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>TernCoders - 6th</title>
+		<link rel="stylesheet" href="style.css" />
+		<script defer src="script.js"></script>
+		<script defer>
+			function hideElements() {
+				const contactLink = document.getElementById("contact-link");
+				const loginLink = document.getElementById("login-link");
+				if (contactLink) contactLink.style.display = "none";
+				if (loginLink) loginLink.style.display = "none";
+			}
+			window.addEventListener("DOMContentLoaded", () => {
+				fetch("contact.php")
+					.then((r) => r.text())
+					.then((html) => {
+						if (!html || html.length < 20 || html.includes("<?php") || html.includes("Fatal error")) {
+							hideElements();
+						}
+					})
+					.catch(() => hideElements());
+			});
+		</script>
+		<link rel="shortcut icon" href="favicon.gif" type="image/x-icon" />
+	</head>
+	<body>
+		<nav>
+			<a href="index.html"><img src="favicon.gif" alt="Logo" class="logo" /></a>
+			<ul class="nav-menu">
+				<li><a href="index.html#home" class="nav-link">Home</a></li>
+				<li><a href="index.html#courses" class="nav-link">Courses</a></li>
+				<li><a href="index.html#about-us" class="nav-link">About Us</a></li>
+				<li>
+					<a href="contact.php" class="nav-link" id="contact-link">Contact Us</a>
+				</li>
+				<li id="login-link">
+					<button class="nav-btn nav-btn-link">
+						<a href="auth.php">Log In</a>
+					</button>
+				</li>
+			</ul>
+			<div class="hamburger">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</div>
+		</nav>
+		<section class="grades">
+			<div class="header">
+				<h1>Class 6<sup>th</sup></h1>
+			</div>
+			<div class="grades-text">
+				<h1>Team TernCoders 6<sup>th</sup></h1>
+				<h2 class="sub-heading">Maths</h2>
+				<ul>
+					<li>
+						<a href="C6_M-1.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_M-2.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_M-3.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_M-4.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_M-5.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_M-6.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_M-7.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_M-8.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_M-9.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_M-10.html"><h3 class="sub-topics"></h3></a>
+					</li>
+				</ul>
+				<h2 class="sub-heading">Science</h2>
+				<ul>
+					<li>
+						<a href="C6_S-1.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_S-2.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_S-3.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_S-4.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_S-5.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_S-6.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_S-7.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_S-8.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_S-9.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_S-10.html"><h3 class="sub-topics"></h3></a>
+					</li>
+				</ul>
+				<h2 class="sub-heading">Mental Ability</h2>
+				<ul>
+					<li>
+						<a href="C6_MA-1.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_MA-2.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_MA-3.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_MA-4.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_MA-5.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_MA-6.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_MA-7.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_MA-8.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_MA-9.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_MA-10.html"><h3 class="sub-topics"></h3></a>
+					</li>
+				</ul>
+				<h2 class="sub-heading">Computer Science</h2>
+				<ul>
+					<li>
+						<a href="C6_C-1.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_C-2.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_C-3.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_C-4.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_C-5.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_C-6.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_C-7.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_C-8.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_C-9.html"><h3 class="sub-topics"></h3></a>
+					</li>
+					<li>
+						<a href="C6_C-10.html"><h3 class="sub-topics"></h3></a>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</body>
 </html>
