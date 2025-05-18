@@ -1,8 +1,0 @@
-{
-  "useTabs": true,
-  "tabWidth": 2,
-  "htmlWhitespaceSensitivity": "strict",
-  "semi": true,
-  "singleQuote": false,
-  "plugins": ["@prettier/plugin-php"]
-}
