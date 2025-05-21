@@ -252,7 +252,8 @@ section {
   text-align: center;
   background-color: transparent;
 }
-.about-content h1 {
+.about-content,
+.about-h1 {
   padding-bottom: 2.5vw;
   font-size: 3.98999999999999999999999999999999999999999999999999999999999999999999988888888888888888888vw;
   font-family: "DynaPuff", system-ui;
@@ -262,6 +263,24 @@ section {
 .about-content p {
   font-size: 1.5vw;
   line-height: 2.5vw;
+}
+.animated-text {
+  font-size: 1.5vw;
+  padding-block: 2vw;
+}
+.animated-link {
+  text-decoration: none;
+  background: linear-gradient(to left, yellow, darkblue, hotpink, indianred);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 0 0 2vw lightgreen;
+  animation: animated-text 0.75s infinite alternate;
+}
+
+@keyframes animated-text {
+  100% {
+    text-shadow: 0 0 0.125vw yellow;
+  }
 }
 .floating-shapes {
   position: absolute;
@@ -621,6 +640,11 @@ section {
 .landscapely {
   display: block;
 }
+@media (max-width: 430px) {
+  .animated-text {
+    font-size: 5vw;
+  }
+}
 @media (orientation: portrait) {
   html {
     scroll-padding-top: 10vw;
@@ -723,12 +747,15 @@ section {
   .about-content {
     padding: 0 10vw;
   }
-  .about-content h1 {
+  .about-content .about-h1 {
     font-size: 6vw;
   }
   .about-content p {
     font-size: 3.5vw;
     line-height: 4.5vw;
+  }
+  .animated-text {
+    font-size: 5vw;
   }
   .shape1 {
     width: 17.5vw;
@@ -842,7 +869,7 @@ section {
     padding-top: 3.5vw;
     font-size: 5vw;
   }
-  .about-content h1 {
+  .about-content .about-h1 {
     font-size: 8vw;
   }
   .about-content p {
