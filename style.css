@@ -13,6 +13,7 @@
 }
 ::selection {
   background-color: rgb(137, 137, 241);
+  color: white;
 }
 body {
   font-size: 0;
@@ -379,8 +380,7 @@ section {
   height: fit-content;
 }
 .header {
-  background-image:
-    linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
     url("school\ img.png");
   background-size: cover;
   background-position: center;
@@ -612,9 +612,7 @@ section {
   color: #bbb;
   text-decoration: none;
   position: relative;
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 .footer-column ul li a::after {
   content: "";
