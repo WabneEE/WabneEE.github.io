@@ -67,20 +67,47 @@ nav {
 .nav-btn {
   width: 7vw;
   height: 3vw;
-  background-color: #007bff;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    rgb(0, 212, 255),
+    rgb(9, 132, 227),
+    rgb(163, 0, 255),
+    rgb(255, 0, 191)
+  );
+  background-size: 200% 100%;
+  background-position: 0% 0%;
+  border-radius: 0 1.5vw;
   font-size: 1.5vw;
-  transition: all 0.3s linear;
+  transition: all 0.5s linear;
 }
 .nav-btn a {
   text-decoration: none;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
-.nav-btn:hover,
-.nav-link::after {
-  background-color: #0000ee;
+.nav-btn:hover {
+  animation: gradientFlow 1.2s infinite alternate linear;
+  box-shadow: 0 0.3vw 0.8vw rgba(79, 170, 255, 0.9);
+  transform: scale(1.05);
+}
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
 }
 .nav-link:hover {
   color: #0000ee;
+}
+.nav-link::after {
+  background-color: #0000ee;
 }
 .nav-link::after {
   content: "";
@@ -352,7 +379,8 @@ section {
   height: fit-content;
 }
 .header {
-  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+  background-image:
+    linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
     url("school\ img.png");
   background-size: cover;
   background-position: center;
@@ -492,7 +520,7 @@ section {
   background-size: 300% 300%;
   animation: gradientShift 4s ease infinite;
   box-shadow: 0 4px 15px rgba(79, 170, 255, 0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   user-select: none;
 }
 .btn-gradient:hover {
@@ -584,7 +612,9 @@ section {
   color: #bbb;
   text-decoration: none;
   position: relative;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 .footer-column ul li a::after {
   content: "";
@@ -670,10 +700,11 @@ section {
     font-size: 4vw;
   }
   .nav-btn {
-    width: 50vw;
+    width: 28vw;
     height: 10vw;
     font-size: 4vw;
     margin: auto;
+    border-radius: 0 4vw;
   }
   .logo {
     width: 10vw;

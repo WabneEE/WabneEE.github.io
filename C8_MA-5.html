@@ -1,60 +1,192 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>TernCoders - Class 8 - Mental Ability - Chapter 5</title>
-		<link rel="stylesheet" href="style.css" />
-		<script defer src="script.js"></script>
-		<script defer>
-			function hideElements() {
-				const contactLink = document.getElementById("contact-link");
-				const loginLink = document.getElementById("login-link");
-				if (contactLink) contactLink.style.display = "none";
-				if (loginLink) loginLink.style.display = "none";
-			}
-			window.addEventListener("DOMContentLoaded", () => {
-				fetch("contact.php")
-					.then((r) => r.text())
-					.then((html) => {
-						if (
-							!html ||
-							html.length < 20 ||
-							html.includes("<?php") ||
-							html.includes("Fatal error")
-						) {
-							hideElements();
-						}
-					})
-					.catch(() => hideElements());
-			});
-		</script>
-		<link rel="shortcut icon" href="favicon.gif" type="image/x-icon" />
-	</head>
-	<body>
-		<nav>
-			<a href="index.html"><img src="favicon.gif" alt="Logo" class="logo" /></a>
-			<ul class="nav-menu">
-				<li><a href="index.html#home" class="nav-link">Home</a></li>
-				<li><a href="index.html#courses" class="nav-link">Courses</a></li>
-				<li><a href="index.html#about-us" class="nav-link">About Us</a></li>
-				<li
-					><a href="contact.php" class="nav-link" id="contact-link"
-						>Contact Us</a
-					></li
-				>
-				<li id="login-link">
-					<button class="nav-btn nav-btn-link">
-						<a href="auth.php">Log In</a>
-					</button>
-				</li>
-			</ul>
-			<div class="hamburger">
-				<span class="bar"></span>
-				<span class="bar"></span>
-				<span class="bar"></span>
-			</div>
-		</nav>
-		<section class="chapter"></section>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wabne - Class 8 - Mental Ability - Chapter 5</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script defer>
+      function hideElements() {
+        document.getElementById("contact-us").style.display = "none";
+        document.getElementById("contact-link").style.display = "none";
+        document.getElementById("nav-login-link").style.display = "none";
+        document.getElementById("nav-register-link").style.display = "none";
+        document.getElementById("footer-buttons").style.display = "none";
+        document.getElementById("fqc").style.display = "none";
+        document.getElementById("fkmau").style.display = "block";
+        document.getElementById("fqc2").style.display = "none";
+        document.getElementById("fkmau2").style.display = "block";
+      }
+      window.addEventListener("DOMContentLoaded", () => {
+        fetch("contact.php")
+          .then((r) => r.text())
+          .then((html) => {
+            if (
+              !html ||
+              html.length < 20 ||
+              html.includes("<?php") ||
+              html.includes("Fatal error")
+            ) {
+              hideElements();
+            } else {
+              const iframe = document.getElementById("contact-us");
+              iframe.src = "contact.php";
+              iframe.style.display = "block";
+            }
+          })
+          .catch(() => hideElements());
+      });
+      window.addEventListener("DOMContentLoaded", () => {
+        const iframeCourses = document.getElementById("courses");
+        iframeCourses.onload = () => {
+          try {
+            const links = iframeCourses.contentDocument.querySelectorAll("a");
+            links.forEach((link) => {
+              link.setAttribute("target", "_top");
+            });
+          } catch (e) {
+            console.warn(
+              "Could not access iframe content (CORS or browser restriction).",
+            );
+          }
+        };
+      });
+    </script>
+    <link rel="shortcut icon" href="favicon2.gif" type="image/x-icon" />
+  </head>
+  <body>
+    <nav>
+      <a href="index.html"><img src="favicon.gif" alt="Logo" class="logo" /></a>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#courses" class="nav-link">Courses</a></li>
+        <li><a href="#about-us" class="nav-link">About Us</a></li>
+        <li>
+          <a href="#contact-us" class="nav-link" id="contact-link"
+            >Contact Us</a
+          >
+        </li>
+        <li id="nav-login-link">
+          <button class="nav-btn"><a href="auth.php#login">Log In</a></button>
+        </li>
+        <li id="nav-register-link">
+          <button class="nav-btn">
+            <a href="auth.php#register">Register</a>
+          </button>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span><span class="bar"></span
+        ><span class="bar"></span>
+      </div>
+    </nav>
+    <section class="chapter"></section>
+    <footer class="tern-footer">
+      <div class="footer-container">
+        <div class="footer-column logo-quote-col">
+          <div class="footer-logo">
+            <img src="favicon2.gif" alt="Wabne Logo" /><span>Wabne</span>
+          </div>
+          <p class="footer-quote">
+            "The beautiful thing about learning is nobody can take it away from
+            you." – B.B. King
+          </p>
+          <div class="footer-buttons" id="footer-buttons">
+            <a href="auth.php#login" class="btn-gradient login-btn">Login</a
+            ><a href="auth.php#register" class="btn-gradient register-btn"
+              >Register</a
+            >
+          </div>
+        </div>
+        <div class="footer-column landscapely">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#courses">Courses</a></li>
+            <li><a href="index.html#about-us">About Us</a></li>
+            <li><a href="index.html#contact-us" id="fqc">Contact Us</a></li>
+            <li>
+              <a href="kmau.html" id="fkmau" style="display: none"
+                >Know More About Us</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-column landscapely">
+          <h3>Class 6<sup>th</sup></h3>
+          <ul>
+            <li><a href="sixth.html#s1">Maths</a></li>
+            <li><a href="sixth.html#s2">Science</a></li>
+            <li><a href="sixth.html#s3">Mental Ability</a></li>
+            <li><a href="sixth.html#s4">Computer Science</a></li>
+          </ul>
+        </div>
+        <div class="footer-column landscapely">
+          <h3>Class 7<sup>th</sup></h3>
+          <ul>
+            <li><a href="seventh.html#s1">Maths</a></li>
+            <li><a href="seventh.html#s2">Science</a></li>
+            <li><a href="seventh.html#s3">Mental Ability</a></li>
+            <li><a href="seventh.html#s4">Computer Science</a></li>
+          </ul>
+        </div>
+        <div class="footer-column landscapely">
+          <h3>Class 8<sup>th</sup></h3>
+          <ul>
+            <li><a href="eighth.html#s1">Maths</a></li>
+            <li><a href="eighth.html#s2">Science</a></li>
+            <li><a href="eighth.html#s3">Mental Ability</a></li>
+            <li><a href="eighth.html#s4">Computer Science</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="Maha-division portraitly">
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#courses">Courses</a></li>
+            <li><a href="index.html#about-us">About Us</a></li>
+            <li><a href="index.html#contact-us" id="fqc2">Contact Us</a></li>
+            <li>
+              <a href="kmau.html" id="fkmau2" style="display: none"
+                >Know More About Us</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Class 6<sup>th</sup></h3>
+          <ul>
+            <li><a href="sixth.html#s1">Maths</a></li>
+            <li><a href="sixth.html#s2">Science</a></li>
+            <li><a href="sixth.html#s3">Mental Ability</a></li>
+            <li><a href="sixth.html#s4">Computer Science</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="Maha-division portraitly">
+        <div class="footer-column">
+          <h3>Class 7<sup>th</sup></h3>
+          <ul>
+            <li><a href="seventh.html#s1">Maths</a></li>
+            <li><a href="seventh.html#s2">Science</a></li>
+            <li><a href="seventh.html#s3">Mental Ability</a></li>
+            <li><a href="seventh.html#s4">Computer Science</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Class 8<sup>th</sup></h3>
+          <ul>
+            <li><a href="eighth.html#s1">Maths</a></li>
+            <li><a href="eighth.html#s2">Science</a></li>
+            <li><a href="eighth.html#s3">Mental Ability</a></li>
+            <li><a href="eighth.html#s4">Computer Science</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2025 Wabne. All rights reserved.</div>
+    </footer>
+  </body>
 </html>
