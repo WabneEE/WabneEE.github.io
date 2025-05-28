@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=DynaPuff:wght@400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans+Deva:wght@100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Playpen+Sans+Deva:wght@100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@100;200;300;400;500;600;700;800;900&display=swap");
 * {
 	height: auto;
 	width: auto;
@@ -31,6 +34,9 @@ html {
 }
 img {
 	height: auto !important;
+}
+strong {
+	font-weight: bold;
 }
 body {
 	background-color: #fff;
@@ -671,6 +677,186 @@ section {
 .landscapely {
 	display: block;
 }
+#kmau {
+	margin-top: 5vw;
+	background-color: #fff;
+	gap: 2.5vw;
+	height: calc(204vh - 5vw);
+	z-index: 0;
+}
+.kmau-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2.5vw;
+}
+#kmau h1 {
+	font-size: 4vw;
+	font-family: "Playpen Sans Deva", cursive;
+	font-optical-sizing: auto;
+	font-weight: 600;
+	font-style: normal;
+}
+#kmau h4 {
+	font-family: "Heebo", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 2vw;
+	color: #333;
+}
+.kmau-main {
+	display: flex;
+	flex-direction: row;
+}
+.founder-1,
+.founder-2 {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	gap: 2.5vw;
+	padding: 2.5vw;
+	letter-spacing: 2px;
+}
+.img-wrapper {
+	position: relative;
+	width: 10vw;
+	height: 10vw;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.img-wrapper img {
+	border-radius: 50%;
+	width: 10vw;
+	height: 10vw;
+	z-index: 10;
+}
+@property --angle {
+	syntax: "<angle>";
+	initial-value: 0deg;
+	inherits: false;
+}
+.img-wrapper::before,
+.img-wrapper::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	background-image: conic-gradient(
+		from var(--angle),
+		rgb(196, 18, 196),
+		pink,
+		yellow,
+		blue,
+		pink,
+		darkblue,
+		rgb(196, 18, 196)
+	);
+	animation: bdrdan 2.5s infinite linear;
+	z-index: 1;
+}
+.img-wrapper::before {
+	filter: blur(1.5vw);
+}
+@keyframes bdrdan {
+	0% {
+		--angle: 0deg;
+	}
+	100% {
+		--angle: 360deg;
+	}
+}
+.founder-1 h1,
+.founder-2 h1 {
+	font-size: 4vw;
+}
+.kmau-main-box-wrapper {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 37vw;
+	height: 40vh;
+}
+.kmau-main-box {
+	width: 38vw;
+	background-color: #fcfcfc;
+	height: 40vh;
+	padding-bottom: 2vw;
+	position: relative;
+	z-index: 10;
+	border-radius: 2vw;
+}
+.kmau-main-box-wrapper::before,
+.kmau-main-box-wrapper::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 2vw;
+	background-image: conic-gradient(
+		from var(--angle),
+		rgb(196, 18, 196),
+		pink,
+		yellow,
+		blue,
+		pink,
+		darkblue,
+		rgb(196, 18, 196)
+	);
+	animation: bdrdan 2.5s infinite linear;
+	z-index: 1;
+}
+.kmau-main-box-wrapper::before {
+	filter: blur(1.5vw);
+}
+.kmau-main-box-h3 {
+	font-size: 1.7vw;
+	padding-block: 0.79vw;
+	font-family: "Noto Sans Myanmar", sans-serif;
+	font-weight: bold;
+	font-style: normal;
+}
+.kmau-main-box-p {
+	font-size: 1.2vw;
+	color: #444;
+	padding-block: 1vw;
+	line-height: 1.26;
+}
+.other-websites {
+	width: 25vw;
+	background-color: #fcfcfc;
+	height: 25vh;
+	box-shadow: 0 0 12px grey;
+}
+.kmau-main-box-MYW {
+	font-size: 1.7vw;
+	font-family: "Noto Sans Myanmar", sans-serif;
+	font-weight: bold;
+	font-style: normal;
+	text-align: center;
+}
+.kmau-main-box-a {
+	text-decoration: none;
+	font-size: 1.7vw;
+	color: #797979;
+	display: block;
+	text-align: center;
+}
+.our-projects {
+	width: 25vw;
+	background-color: #fcfcfc;
+	height: 15vh;
+	box-shadow: 0 0 12px grey;
+	display: block;
+	margin-inline: auto;
+	margin-top: 1vw;
+	margin-bottom: 4vw;
+}
 @media (orientation: portrait) {
 	html {
 		scroll-padding-top: 10vw;
@@ -883,6 +1069,9 @@ section {
 	}
 	.tern-footer .footer-bottom {
 		font-size: 2.76vw;
+	}
+	#kmau {
+		margin-top: 10vw;
 	}
 }
 @media (orientation: portrait) and (max-width: 513px) {
