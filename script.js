@@ -1,3 +1,20 @@
+window.addEventListener("DOMContentLoaded", () => {
+	const iframeCourses = document.getElementById("courses");
+	if (iframeCourses) {
+		iframeCourses.onload = () => {
+			try {
+				const links = iframeCourses.contentDocument.querySelectorAll("a");
+				links.forEach((link) => {
+					link.setAttribute("target", "_top");
+				});
+			} catch (e) {
+				console.warn(
+					"Could not access iframe content (CORS or browser restriction).",
+				);
+			}
+		};
+	}
+});
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 hamburger.addEventListener("click", () => {
@@ -5,17 +22,27 @@ hamburger.addEventListener("click", () => {
 	navMenu.classList.toggle("active");
 });
 function hideElements() {
-	document.getElementById("contact-us").style.display = "none";
-	document.getElementById("contact-link").style.display = "none";
-	document.getElementById("nav-login-link").style.display = "none";
-	document.getElementById("nav-register-link").style.display = "none";
-	document.getElementById("footer-buttons").style.display = "none";
-	document.getElementById("fqc").style.display = "none";
-	document.getElementById("fkmau").style.display = "block";
-	document.getElementById("fqc2").style.display = "none";
-	document.getElementById("fkmau2").style.display = "block";
+	const idsToHide = [
+		"contact-us",
+		"contact-link",
+		"nav-login-link",
+		"nav-register-link",
+		"footer-buttons",
+		"fqc",
+		"fqc2",
+	];
+	const idsToShow = ["fkmau", "fkmau2"];
+	idsToHide.forEach((id) => {
+		const el = document.getElementById(id);
+		if (el) el.style.display = "none";
+	});
+	idsToShow.forEach((id) => {
+		const el = document.getElementById(id);
+		if (el) el.style.display = "block";
+	});
 }
 window.addEventListener("DOMContentLoaded", () => {
+	const iframe = document.getElementById("contact-us");
 	fetch("contact.php")
 		.then((r) => r.text())
 		.then((html) => {
@@ -26,26 +53,10 @@ window.addEventListener("DOMContentLoaded", () => {
 				html.includes("Fatal error")
 			) {
 				hideElements();
-			} else {
-				const iframe = document.getElementById("contact-us");
+			} else if (iframe) {
 				iframe.src = "contact.php";
 				iframe.style.display = "block";
 			}
 		})
 		.catch(() => hideElements());
-});
-window.addEventListener("DOMContentLoaded", () => {
-	const iframeCourses = document.getElementById("courses");
-	iframeCourses.onload = () => {
-		try {
-			const links = iframeCourses.contentDocument.querySelectorAll("a");
-			links.forEach((link) => {
-				link.setAttribute("target", "_top");
-			});
-		} catch (e) {
-			console.warn(
-				"Could not access iframe content (CORS or browser restriction).",
-			);
-		}
-	};
 });
