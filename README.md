@@ -68,7 +68,6 @@ $pdo = new PDO("mysql:host=localhost;dbname=contact_form;charset=utf8", "root", 
 ```
 
 Then open MySQL workbench and choose local instance under MySQL connection and sign in with your chosen password.
-
 Then, paste the following into query 1 and click the thunderbolt to execute:
 
 ```sql
@@ -100,8 +99,7 @@ browser-sync --version
 - Choose Developer Mode and install to your preferred directory.
 - When prompted for PHP, browse to and select `php.exe` from your installed PHP folder.
 - Complete the installation.
-
-To install PHPMailer in the project:
+  To install PHPMailer in the project:
 
 ```bash
 composer require phpmailer/phpmailer
@@ -144,7 +142,6 @@ SELECT * FROM messages;
 ```
 
 Then click the thunderbolt button ad you will able to view stored submissions.
-
 **Tip:** To maximise the view of stored submissions close the three sidebars by using the three buttons on top right.
 
 ## For MacOS/Linux:
