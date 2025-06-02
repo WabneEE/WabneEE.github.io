@@ -828,6 +828,38 @@ section {
 	margin-top: 1vw;
 	margin-bottom: 4vw;
 }
+.h1-style-math {
+}
+.h2-style-math {
+}
+.h3-style-math {
+}
+.p-style-math {
+}
+.h1-style-science {
+}
+.h2-style-science {
+}
+.h3-style-science {
+}
+.p-style-science {
+}
+.h1-style-mentalability {
+}
+.h2-style-mentalability {
+}
+.h3-style-mentalability {
+}
+.p-style-mentalability {
+}
+.h1-style-cs {
+}
+.h2-style-cs {
+}
+.h3-style-cs {
+}
+.p-style-cs {
+}
 @media (orientation: portrait) {
 	html {
 		scroll-padding-top: 10vw;
@@ -1059,7 +1091,39 @@ section {
 		align-items: center;
 	}
 	.kmau-main-box {
-		width: 1000000vw;
+		width: 100vw;
+	}
+	.h1-style-math {
+	}
+	.h2-style-math {
+	}
+	.h3-style-math {
+	}
+	.p-style-math {
+	}
+	.h1-style-science {
+	}
+	.h2-style-science {
+	}
+	.h3-style-science {
+	}
+	.p-style-science {
+	}
+	.h1-style-mentalability {
+	}
+	.h2-style-mentalability {
+	}
+	.h3-style-mentalability {
+	}
+	.p-style-mentalability {
+	}
+	.h1-style-cs {
+	}
+	.h2-style-cs {
+	}
+	.h3-style-cs {
+	}
+	.p-style-cs {
 	}
 }
 @media (orientation: portrait) and (max-width: 513px) {
