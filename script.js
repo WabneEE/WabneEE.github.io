@@ -8,9 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
 					link.setAttribute("target", "_top");
 				});
 			} catch (e) {
-				console.warn(
-					"Could not access iframe content (CORS or browser restriction).",
-				);
+				console.warn("Could not access iframe content (CORS or browser restriction).");
 			}
 		};
 	}
@@ -22,15 +20,7 @@ hamburger.addEventListener("click", () => {
 	navMenu.classList.toggle("active");
 });
 function hideElements() {
-	const idsToHide = [
-		"contact-us",
-		"contact-link",
-		"nav-login-link",
-		"nav-register-link",
-		"footer-buttons",
-		"fqc",
-		"fqc2",
-	];
+	const idsToHide = ["contact-us", "contact-link", "nav-login-link", "nav-register-link", "footer-buttons", "fqc", "fqc2"];
 	const idsToShow = ["fkmau", "fkmau2"];
 	idsToHide.forEach((id) => {
 		const el = document.getElementById(id);
@@ -46,12 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	fetch("contact.php")
 		.then((r) => r.text())
 		.then((html) => {
-			if (
-				!html ||
-				html.length < 20 ||
-				html.includes("<?php") ||
-				html.includes("Fatal error")
-			) {
+			if (!html || html.length < 20 || html.includes("<?php") || html.includes("Fatal error")) {
 				hideElements();
 			} else if (iframe) {
 				iframe.src = "contact.php";

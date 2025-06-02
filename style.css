@@ -179,13 +179,7 @@ nav {
 	height: 3vw;
 	position: relative;
 	overflow: hidden;
-	background: linear-gradient(
-		90deg,
-		rgb(0, 212, 255),
-		rgb(9, 132, 227),
-		rgb(163, 0, 255),
-		rgb(255, 0, 191)
-	);
+	background: linear-gradient(90deg, rgb(0, 212, 255), rgb(9, 132, 227), rgb(163, 0, 255), rgb(255, 0, 191));
 	background-size: 200% 100%;
 	background-position: 0% 0%;
 	border-radius: 0 1.5vw;
@@ -415,9 +409,7 @@ section {
 	height: fit-content;
 }
 .header {
-	background-image:
-		linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
-		url("school\ img.png");
+	background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url("school\ img.png");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -730,16 +722,7 @@ section {
 	position: absolute;
 	inset: 0;
 	border-radius: 50%;
-	background-image: conic-gradient(
-		from var(--angle),
-		rgb(196, 18, 196),
-		pink,
-		yellow,
-		blue,
-		pink,
-		darkblue,
-		rgb(196, 18, 196)
-	);
+	background-image: conic-gradient(from var(--angle), rgb(196, 18, 196), pink, yellow, blue, pink, darkblue, rgb(196, 18, 196));
 	animation: bdrdan 2.5s infinite linear;
 	z-index: 1;
 }
@@ -769,16 +752,7 @@ section {
 	position: absolute;
 	inset: 0;
 	border-radius: 2vw;
-	background-image: conic-gradient(
-		from var(--angle),
-		rgb(196, 18, 196),
-		pink,
-		yellow,
-		blue,
-		pink,
-		darkblue,
-		rgb(196, 18, 196)
-	);
+	background-image: conic-gradient(from var(--angle), rgb(196, 18, 196), pink, yellow, blue, pink, darkblue, rgb(196, 18, 196));
 	animation: bdrdan 2.5s infinite linear;
 	z-index: 1;
 }
@@ -829,6 +803,9 @@ section {
 	margin-bottom: 4vw;
 }
 .h1-style-math {
+	font-size: 6vw;
+	font-family: "DynaPuff", system-ui;
+	font-weight: bold;
 }
 .h2-style-math {
 }
@@ -1068,30 +1045,59 @@ section {
 	}
 	.kmau-main img {
 		width: 20vw;
+		margin-block: 3vw;
+	}
+	.img-wrapper{
+		width: 20vw;
+		height: 20vw;
 	}
 	#kmau h1 {
-		font-size: 5vw;
+		font-size: 7vw;
 		margin-block: 3vw;
+	}
+	.founder-1,
+	.founder-2 {
+		width: 100vw;
+		position: relative;
 	}
 	.kmau-main-box {
 		height: 40vh;
+		width: 80vw;
+		padding: 5vw;
 	}
 	.kmau-main-box-wrapper {
 		height: 40vh;
+		width: 80vw;
+		margin-block: 3.1vw;
 	}
 	.kmau-main-box-h3 {
 		font-size: 3.5vw;
 	}
 	.kmau-main-box-p {
-		font-size: 2.5vw;
+		font-size: 4vw;
 	}
 	.kmau-main {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
-	.kmau-main-box {
-		width: 100vw;
+	.other-websites{
+		width: 60vw;
+		height: fit-content;
+		padding: 2vw;
+		margin: 2.4vw;
+	}
+ .kmau-main-box-a{
+		font-size: 4vw;
+	}
+ .kmau-main-box-MYW{
+		font-size: 5.14vw;
+	}
+	.our-projects{
+		width: 60vw;
+		height: fit-content;
+		padding: 2vw;
+		margin: 2.4vw auto;
 	}
 	.h1-style-math {
 	}
@@ -1162,10 +1168,54 @@ section {
 	.animated-text {
 		font-size: 5vw;
 	}
-	.kmau-main-box {
-		height: 25vh;
+	#kmau h1 {
+		font-size: 7vw;
+		margin-block: 3vw;
 	}
+	.founder-1,
+	.founder-2 {
+		width: 100vw;
+		position: relative;
+	}
+	.kmau-main-box,
 	.kmau-main-box-wrapper {
-		height: 25vh;
+		height: 45vh;
+		width: 80vw;
+	}
+	.kmau-main-box {
+		padding: 5vw;
+	}
+	.kmau-main-box-wrapper{
+		margin-block: 3.1vw;
+	}
+	.kmau-main-box-h3 {
+		font-size: 5vw;
+	}
+	.kmau-main-box-p {
+		font-size: 4vw;
+		line-height: 6vw;
+	}
+	.kmau-main {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.other-websites{
+		width: 60vw;
+		height: fit-content;
+		padding: 2vw;
+		margin: 2.4vw;
+	}
+ .kmau-main-box-a{
+		font-size: 4vw;
+	}
+ .kmau-main-box-MYW{
+		font-size: 5.14vw;
+	}
+	.our-projects{
+		width: 60vw;
+		height: fit-content;
+		padding: 2vw;
+		margin: 2.4vw auto;
 	}
 }

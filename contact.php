@@ -23,8 +23,7 @@ if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 if (empty($phone)) {
 	$phone = "Not Given";
 } elseif (!preg_match('/^[6-9]\d{9}$/', $phone)) {
-	$errors[] =
-		"Phone number must be a valid 10-digit Indian mobile number starting with 6-9.";
+	$errors[] = "Phone number must be a valid 10-digit Indian mobile number starting with 6-9.";
 }
 if (empty($subject)) {
 	$errors[] = "Subject is required.";
@@ -41,9 +40,7 @@ if (empty($errors)) {
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	$stmt = $conn->prepare(
-		"INSERT INTO messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)"
-	);
+	$stmt = $conn->prepare("INSERT INTO messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)");
 	$stmt->bind_param("sssss", $name, $email, $phone, $subject, $message);
 	if (!$stmt->execute()) {
 		echo "<script>alert('Database error: {$stmt->error}'); window.location.href='index.html';</script>";
@@ -160,8 +157,7 @@ HTML;
 	echo "<script>alert('Message sent successfully! A confirmation has been sent to your email.'); window.location.href='index.html';</script>";
 	exit();
 } else {
-	$confirmationMessage =
-		"<h3 style='color:red;'>" . implode("<br>", $errors) . "</h3>";
+	$confirmationMessage = "<h3 style='color:red;'>" . implode("<br>", $errors) . "</h3>";
 }
 $name_cookie = $_COOKIE["contact_name"] ?? "";
 $email_cookie = $_COOKIE["contact_email"] ?? "";

@@ -2,11 +2,7 @@
 session_start();
 require "vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
-$pdo = new PDO(
-	"mysql:host=localhost;dbname=login_db",
-	"root",
-	"b#P3L8jQoR*5uVp"
-);
+$pdo = new PDO("mysql:host=localhost;dbname=login_db", "root", "b#P3L8jQoR*5uVp");
 $error = "";
 $success = "";
 function sendOTP($email, $name)
@@ -58,9 +54,7 @@ if (isset($_POST["register"])) {
 		$stmt->execute([$email]);
 		if ($stmt->rowCount() == 0) {
 			$password_hash = password_hash($password, PASSWORD_DEFAULT);
-			$stmt = $pdo->prepare(
-				"INSERT INTO users (name, email, password_hash, email_verified) VALUES (?, ?, ?, 0)"
-			);
+			$stmt = $pdo->prepare("INSERT INTO users (name, email, password_hash, email_verified) VALUES (?, ?, ?, 0)");
 			$stmt->execute([$name, $email, $password_hash]);
 			sendOTP($email, $name);
 			$_SESSION["pending_verification"] = $email;
@@ -77,9 +71,7 @@ if (isset($_POST["login"])) {
 	$email = $_POST["email"] ?? "";
 	$password = $_POST["password"] ?? "";
 	if ($email && $password) {
-		$stmt = $pdo->prepare(
-			"SELECT * FROM users WHERE email = ? AND email_verified = 1"
-		);
+		$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND email_verified = 1");
 		$stmt->execute([$email]);
 		$user = $stmt->fetch();
 		if ($user && password_verify($password, $user["password_hash"])) {
