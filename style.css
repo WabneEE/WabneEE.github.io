@@ -842,7 +842,7 @@ section {
   padding-left: 10%;
   padding-right: 10%;
 }
-.chapter-math h1 {
+.chapter h1 {
   font-size: 4vw;
   font-family: "DynaPuff", system-ui;
   font-weight: bold;
@@ -851,27 +851,27 @@ section {
   text-decoration: underline;
   margin-bottom: 2vw;
 }
-.chapter-math h2 {
+.chapter h2 {
   font-size: 2vw;
   font-weight: bold;
   margin-block: 1.2vw;
   color: rgba(255, 0, 0, 0.804);
 }
-.chapter-math h3 {
+.chapter h3 {
   font-size: 1.81vw;
   font-family: "Roboto Slab", serif;
   font-weight: 800;
   color: #4faaff;
 }
-.chapter-math span {
+.chapter span {
   font-weight: bold;
 }
-.chapter-math p {
+.chapter p {
   font-size: 1.5vw;
   margin-block: 1vw;
   line-height: 1.4;
 }
-.chapter-math .inv {
+.chapter .inv {
   font-size: 1.5vw;
   margin-block: 1vw;
   line-height: 1.4;
@@ -879,8 +879,8 @@ section {
   font-weight: normal;
   pointer-events: none;
 }
-.chapter-math .inv::selection,
-.chapter-math .inv ::selection {
+.chapter .inv::selection,
+.chapter .inv ::selection {
   background-color: transparent;
   color: transparent;
 }
@@ -976,19 +976,19 @@ section {
   margin: 0.2vw auto;
   width: auto;
 }
-.chapter-math table {
+.chapter table {
   font-size: 1.5vw;
   display: block;
   margin: 2.5vw auto;
   width: fit-content;
   background-color: black;
 }
-.chapter-math tr {
+.chapter tr {
   width: fit-content;
   height: fit-content;
   gap: 1vw;
 }
-.chapter-math td {
+.chapter td {
   width: fit-content;
   height: fit-content;
   padding: 0.5vw;
@@ -996,14 +996,14 @@ section {
   width: 6vw;
   height: 6vh;
 }
-.chapter-math .exp {
+.chapter .exp {
   width: 100%;
   height: 100%;
   display: grid;
   justify-content: center;
   align-items: center;
 }
-.chapter-math .exp div {
+.chapter .exp div {
   width: fit-content;
   height: fit-content;
   text-align: center;
@@ -1035,8 +1035,8 @@ section {
 .fracs1half {
   margin: 0 0 1.8vw 0;
 }
-.chapter-math .fracs1e,
-.chapter-math .fracs1es {
+.chapter .fracs1e,
+.chapter .fracs1es {
   position: relative;
   font-weight: normal;
 }
@@ -1049,6 +1049,14 @@ section {
   position: absolute;
   translate: -1.3vw 0.3vw;
   user-select: text;
+}
+.chapter ul li {
+  font-size: 1.5vw;
+  margin: 0 0 0 3vw;
+}
+.table2 td {
+  width: fit-content;
+  text-align: center;
 }
 .h1-style-science {
 }
