@@ -879,6 +879,11 @@ section {
   font-weight: normal;
   pointer-events: none;
 }
+.chapter-math .inv::selection,
+.chapter-math .inv ::selection {
+  background-color: transparent;
+  color: transparent;
+}
 .frac {
   display: inline-flex;
   flex-direction: column;
@@ -970,7 +975,80 @@ section {
   background: black;
   margin: 0.2vw auto;
   width: auto;
+}
+.chapter-math table {
+  font-size: 1.5vw;
   display: block;
+  margin: 2.5vw auto;
+  width: fit-content;
+  background-color: black;
+}
+.chapter-math tr {
+  width: fit-content;
+  height: fit-content;
+  gap: 1vw;
+}
+.chapter-math td {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5vw;
+  background-color: white;
+  width: 6vw;
+  height: 6vh;
+}
+.chapter-math .exp {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.chapter-math .exp div {
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+}
+.fracs1 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 0.2vw 1.8vw 0.2vw;
+  translate: 0 -0.35vw;
+}
+.fracs1 .num,
+.fracs1 .den {
+  font-size: 1.5vw;
+  line-height: 1;
+  height: 1.5vw;
+  margin-block: 0.25vw;
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+}
+.fracs1 .bar {
+  width: 100%;
+  height: 0.15vw;
+  background: #000;
+  margin-top: 0vw;
+}
+.fracs1half {
+  margin: 0 0 1.8vw 0;
+}
+.chapter-math .fracs1e,
+.chapter-math .fracs1es {
+  position: relative;
+  font-weight: normal;
+}
+.fracs1e .equals-sign {
+  position: absolute;
+  translate: -1.5vw 1vw;
+  user-select: text;
+}
+.fracs1es .equals-sign {
+  position: absolute;
+  translate: -1.3vw 0.3vw;
+  user-select: text;
 }
 .h1-style-science {
 }
