@@ -871,6 +871,14 @@ section {
   margin-block: 1vw;
   line-height: 1.4;
 }
+.chapter-math .inv {
+  font-size: 1.5vw;
+  margin-block: 1vw;
+  line-height: 1.4;
+  color: transparent;
+  font-weight: normal;
+  pointer-events: none;
+}
 .frac {
   display: inline-flex;
   flex-direction: column;
