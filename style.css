@@ -365,7 +365,7 @@ section {
 }
 .animated-link {
   text-decoration: none;
-  background: linear-gradient(to left, yellow, darkblue, hotpink, indianred);
+  background: linear-gradient(to left, darkblue, hotpink, rgb(194, 55, 55));
   background-clip: text;
   -webkit-background-clip: text;
   text-shadow: 0 0 2vw lightgreen;
@@ -416,8 +416,7 @@ section {
   height: fit-content;
 }
 .header {
-  background-image:
-    linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
     url("school\ img.png");
   background-size: cover;
   background-position: center;
@@ -609,9 +608,7 @@ section {
   color: #bbb;
   text-decoration: none;
   position: relative;
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 .footer-column ul li a::after {
   content: "";
@@ -1054,9 +1051,31 @@ section {
   font-size: 1.5vw;
   margin: 0 0 0 3vw;
 }
+.chapter ol li {
+  font-size: 1.5vw;
+  margin: 0 0 0 3vw;
+}
 .table2 td {
   width: fit-content;
   text-align: center;
+}
+.table2 th {
+  width: fit-content;
+  text-align: center;
+  background-color: whitesmoke;
+}
+.table3 td {
+  width: 25vw;
+  text-align: center;
+}
+.table3 th {
+  width: 25vw;
+  text-align: center;
+  background-color: whitesmoke;
+}
+.book-download {
+  text-align: center;
+  text-decoration: underline;
 }
 .h1-style-science {
 }
