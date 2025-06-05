@@ -180,13 +180,7 @@ nav {
   height: 3vw;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(
-    90deg,
-    rgb(0, 212, 255),
-    rgb(9, 132, 227),
-    rgb(163, 0, 255),
-    rgb(255, 0, 191)
-  );
+  background: linear-gradient(90deg, rgb(0, 212, 255), rgb(9, 132, 227), rgb(163, 0, 255), rgb(255, 0, 191));
   background-size: 200% 100%;
   background-position: 0% 0%;
   border-radius: 0 1.5vw;
@@ -416,8 +410,7 @@ section {
   height: fit-content;
 }
 .header {
-  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
-    url("school\ img.png");
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url("school\ img.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -608,7 +601,9 @@ section {
   color: #bbb;
   text-decoration: none;
   position: relative;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 .footer-column ul li a::after {
   content: "";
@@ -734,16 +729,7 @@ section {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background-image: conic-gradient(
-    from var(--angle),
-    rgb(196, 18, 196),
-    pink,
-    yellow,
-    blue,
-    pink,
-    darkblue,
-    rgb(196, 18, 196)
-  );
+  background-image: conic-gradient(from var(--angle), rgb(196, 18, 196), pink, yellow, blue, pink, darkblue, rgb(196, 18, 196));
   animation: bdrdan 2.5s infinite linear;
   z-index: 1;
 }
@@ -773,16 +759,7 @@ section {
   position: absolute;
   inset: 0;
   border-radius: 2vw;
-  background-image: conic-gradient(
-    from var(--angle),
-    rgb(196, 18, 196),
-    pink,
-    yellow,
-    blue,
-    pink,
-    darkblue,
-    rgb(196, 18, 196)
-  );
+  background-image: conic-gradient(from var(--angle), rgb(196, 18, 196), pink, yellow, blue, pink, darkblue, rgb(196, 18, 196));
   animation: bdrdan 2.5s infinite linear;
   z-index: 1;
 }
@@ -1073,33 +1050,23 @@ section {
   text-align: center;
   background-color: whitesmoke;
 }
-.book-download {
+.book {
   text-align: center;
   text-decoration: underline;
 }
-.h1-style-science {
+span.root-top {
+  position: relative;
+  font-weight: normal;
 }
-.h2-style-science {
-}
-.h3-style-science {
-}
-.p-style-science {
-}
-.h1-style-mentalability {
-}
-.h2-style-mentalability {
-}
-.h3-style-mentalability {
-}
-.p-style-mentalability {
-}
-.h1-style-cs {
-}
-.h2-style-cs {
-}
-.h3-style-cs {
-}
-.p-style-cs {
+span.root-top::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.08625em;
+  padding-left: 0.05em;
+  translate: -0.05em 0;
+  background-color: black;
+  top: 10.5%;
 }
 @media (orientation: portrait) {
   html {
@@ -1366,14 +1333,6 @@ section {
   .chapter {
     margin-top: 10vw;
   }
-  .h1-style-math {
-  }
-  .h2-style-math {
-  }
-  .h3-style-math {
-  }
-  .p-style-math {
-  }
   .number-line {
     width: 65vw;
     margin: 4.125vw 8.25vw 8.25vw 8.25vw;
@@ -1388,30 +1347,6 @@ section {
   }
   .fraction .bar {
     height: 0.15vw;
-  }
-  .h1-style-science {
-  }
-  .h2-style-science {
-  }
-  .h3-style-science {
-  }
-  .p-style-science {
-  }
-  .h1-style-mentalability {
-  }
-  .h2-style-mentalability {
-  }
-  .h3-style-mentalability {
-  }
-  .p-style-mentalability {
-  }
-  .h1-style-cs {
-  }
-  .h2-style-cs {
-  }
-  .h3-style-cs {
-  }
-  .p-style-cs {
   }
 }
 @media (orientation: portrait) and (max-width: 513px) {

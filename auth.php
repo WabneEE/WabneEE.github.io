@@ -7,22 +7,22 @@ $error = "";
 $success = "";
 function sendOTP($email, $name)
 {
-	$otp = rand(100000, 999999);
-	$_SESSION["verify_otp"] = $otp;
-	$_SESSION["verify_email"] = $email;
-	$mail = new PHPMailer(true);
-	$mail->isSMTP();
-	$mail->Host = "smtp.gmail.com";
-	$mail->SMTPAuth = true;
-	$mail->Username = "terncoders@gmail.com";
-	$mail->Password = "tllfxoykrhnsraqk";
-	$mail->SMTPSecure = "tls";
-	$mail->Port = 587;
-	$mail->setFrom("terncoders@gmail.com", "TernCoders");
-	$mail->addAddress($email);
-	$mail->isHTML(true);
-	$mail->Subject = "Your OTP Code - TernCoders";
-	$mail->Body = <<<HTML
+    $otp = rand(100000, 999999);
+    $_SESSION["verify_otp"] = $otp;
+    $_SESSION["verify_email"] = $email;
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host = "smtp.gmail.com";
+    $mail->SMTPAuth = true;
+    $mail->Username = "terncoders@gmail.com";
+    $mail->Password = "tllfxoykrhnsraqk";
+    $mail->SMTPSecure = "tls";
+    $mail->Port = 587;
+    $mail->setFrom("terncoders@gmail.com", "TernCoders");
+    $mail->addAddress($email);
+    $mail->isHTML(true);
+    $mail->Subject = "Your OTP Code - TernCoders";
+    $mail->Body = <<<HTML
 	<html>
 		<head>
 			<meta charset="UTF-8" />
@@ -43,47 +43,47 @@ function sendOTP($email, $name)
 		</body>
 	</html>
 HTML;
-	$mail->send();
+    $mail->send();
 }
 if (isset($_POST["register"])) {
-	$name = $_POST["name"] ?? "";
-	$email = $_POST["email"] ?? "";
-	$password = $_POST["password"] ?? "";
-	if ($name && $email && $password) {
-		$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-		$stmt->execute([$email]);
-		if ($stmt->rowCount() == 0) {
-			$password_hash = password_hash($password, PASSWORD_DEFAULT);
-			$stmt = $pdo->prepare("INSERT INTO users (name, email, password_hash, email_verified) VALUES (?, ?, ?, 0)");
-			$stmt->execute([$name, $email, $password_hash]);
-			sendOTP($email, $name);
-			$_SESSION["pending_verification"] = $email;
-			header("Location: verify.php");
-			exit();
-		} else {
-			$error = "Email already registered.";
-		}
-	} else {
-		$error = "All fields are required.";
-	}
+    $name = $_POST["name"] ?? "";
+    $email = $_POST["email"] ?? "";
+    $password = $_POST["password"] ?? "";
+    if ($name && $email && $password) {
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        if ($stmt->rowCount() == 0) {
+            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $pdo->prepare("INSERT INTO users (name, email, password_hash, email_verified) VALUES (?, ?, ?, 0)");
+            $stmt->execute([$name, $email, $password_hash]);
+            sendOTP($email, $name);
+            $_SESSION["pending_verification"] = $email;
+            header("Location: verify.php");
+            exit();
+        } else {
+            $error = "Email already registered.";
+        }
+    } else {
+        $error = "All fields are required.";
+    }
 }
 if (isset($_POST["login"])) {
-	$email = $_POST["email"] ?? "";
-	$password = $_POST["password"] ?? "";
-	if ($email && $password) {
-		$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND email_verified = 1");
-		$stmt->execute([$email]);
-		$user = $stmt->fetch();
-		if ($user && password_verify($password, $user["password_hash"])) {
-			$_SESSION["user"] = $user["id"];
-			header("Location: dashboard.php");
-			exit();
-		} else {
-			$error = "Invalid credentials or email not verified.";
-		}
-	} else {
-		$error = "Email and password are required.";
-	}
+    $email = $_POST["email"] ?? "";
+    $password = $_POST["password"] ?? "";
+    if ($email && $password) {
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND email_verified = 1");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+        if ($user && password_verify($password, $user["password_hash"])) {
+            $_SESSION["user"] = $user["id"];
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            $error = "Invalid credentials or email not verified.";
+        }
+    } else {
+        $error = "Email and password are required.";
+    }
 }
 ?>
 <!doctype html>

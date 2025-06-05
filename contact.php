@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 function sanitize_input($data)
 {
-	return htmlspecialchars(trim($data), ENT_QUOTES, "UTF-8");
+    return htmlspecialchars(trim($data), ENT_QUOTES, "UTF-8");
 }
 $confirmationMessage = "";
 $name = sanitize_input($_POST["name"] ?? "");
@@ -15,73 +15,73 @@ $subject = sanitize_input($_POST["subject"] ?? "");
 $message = nl2br(sanitize_input($_POST["message"] ?? ""));
 $errors = [];
 if (empty($name)) {
-	$name = "(Name Not Given)";
+    $name = "(Name Not Given)";
 }
 if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-	$errors[] = "Invalid email address.";
+    $errors[] = "Invalid email address.";
 }
 if (empty($phone)) {
-	$phone = "Not Given";
+    $phone = "Not Given";
 } elseif (!preg_match('/^[6-9]\d{9}$/', $phone)) {
-	$errors[] = "Phone number must be a valid 10-digit Indian mobile number starting with 6-9.";
+    $errors[] = "Phone number must be a valid 10-digit Indian mobile number starting with 6-9.";
 }
 if (empty($subject)) {
-	$errors[] = "Subject is required.";
+    $errors[] = "Subject is required.";
 }
 if (empty($message)) {
-	$message = "(Message Not Given)";
+    $message = "(Message Not Given)";
 }
 if (empty($errors)) {
-	$host = "localhost";
-	$user = "root";
-	$pass = "b#P3L8jQoR*5uVp";
-	$db = "contact_form";
-	$conn = new mysqli($host, $user, $pass, $db);
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-	$stmt = $conn->prepare("INSERT INTO messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)");
-	$stmt->bind_param("sssss", $name, $email, $phone, $subject, $message);
-	if (!$stmt->execute()) {
-		echo "<script>alert('Database error: {$stmt->error}'); window.location.href='index.html';</script>";
-		exit();
-	}
-	$stmt->close();
-	$conn->close();
-	$mail = new PHPMailer(true);
-	$mail->isSMTP();
-	$mail->Host = "smtp.gmail.com";
-	$mail->SMTPAuth = true;
-	$mail->Username = "terncoders@gmail.com";
-	$mail->Password = "tllfxoykrhnsraqk";
-	$mail->SMTPSecure = "tls";
-	$mail->Port = 587;
-	$mail->setFrom("terncoders@gmail.com", "TernCoders");
-	$mail->addAddress("terncoders@gmail.com");
-	$mail->isHTML(true);
-	$mail->Subject = $subject;
-	$mail->Body = "<b>Name:</b> $name<br><b>Email:</b> $email<br><b>Phone:</b> $phone<br><b>Message:</b><br>$message";
-	$mail->send();
-	if (isset($_POST["remember"])) {
-		setcookie("contact_name", $name, time() + 30 * 24 * 60 * 60, "/");
-		setcookie("contact_email", $email, time() + 30 * 24 * 60 * 60, "/");
-		setcookie("contact_phone", $phone, time() + 30 * 24 * 60 * 60, "/");
-	}
-	try {
-		$userMail = new PHPMailer(true);
-		$userMail->isSMTP();
-		$userMail->Host = "smtp.gmail.com";
-		$userMail->SMTPAuth = true;
-		$userMail->Username = "terncoders@gmail.com";
-		$userMail->Password = "tllfxoykrhnsraqk";
-		$userMail->SMTPSecure = "tls";
-		$userMail->Port = 587;
-		$userMail->setFrom("terncoders@gmail.com", "TernCoders");
-		$userMail->addAddress($email);
-		$userMail->isHTML(true);
-		$userMail->Subject = "Confirmation Email for $name's Submission";
-		$userMail->AddEmbeddedImage("mailimgae.jpg", "headerImage", "Header Image");
-		$userMail->Body = <<<HTML
+    $host = "localhost";
+    $user = "root";
+    $pass = "b#P3L8jQoR*5uVp";
+    $db = "contact_form";
+    $conn = new mysqli($host, $user, $pass, $db);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $stmt = $conn->prepare("INSERT INTO messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $name, $email, $phone, $subject, $message);
+    if (!$stmt->execute()) {
+        echo "<script>alert('Database error: {$stmt->error}'); window.location.href='index.html';</script>";
+        exit();
+    }
+    $stmt->close();
+    $conn->close();
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host = "smtp.gmail.com";
+    $mail->SMTPAuth = true;
+    $mail->Username = "terncoders@gmail.com";
+    $mail->Password = "tllfxoykrhnsraqk";
+    $mail->SMTPSecure = "tls";
+    $mail->Port = 587;
+    $mail->setFrom("terncoders@gmail.com", "TernCoders");
+    $mail->addAddress("terncoders@gmail.com");
+    $mail->isHTML(true);
+    $mail->Subject = $subject;
+    $mail->Body = "<b>Name:</b> $name<br><b>Email:</b> $email<br><b>Phone:</b> $phone<br><b>Message:</b><br>$message";
+    $mail->send();
+    if (isset($_POST["remember"])) {
+        setcookie("contact_name", $name, time() + 30 * 24 * 60 * 60, "/");
+        setcookie("contact_email", $email, time() + 30 * 24 * 60 * 60, "/");
+        setcookie("contact_phone", $phone, time() + 30 * 24 * 60 * 60, "/");
+    }
+    try {
+        $userMail = new PHPMailer(true);
+        $userMail->isSMTP();
+        $userMail->Host = "smtp.gmail.com";
+        $userMail->SMTPAuth = true;
+        $userMail->Username = "terncoders@gmail.com";
+        $userMail->Password = "tllfxoykrhnsraqk";
+        $userMail->SMTPSecure = "tls";
+        $userMail->Port = 587;
+        $userMail->setFrom("terncoders@gmail.com", "TernCoders");
+        $userMail->addAddress($email);
+        $userMail->isHTML(true);
+        $userMail->Subject = "Confirmation Email for $name's Submission";
+        $userMail->AddEmbeddedImage("mailimgae.jpg", "headerImage", "Header Image");
+        $userMail->Body = <<<HTML
 <html>
 	<head>
 		<style>
@@ -149,15 +149,15 @@ if (empty($errors)) {
 	</body>
 </html>
 HTML;
-		$userMail->send();
-	} catch (Exception $e) {
-		echo "<script>alert('Mailer Error while sending confirmation: {$userMail->ErrorInfo}'); window.location.href='index.html';</script>";
-		exit();
-	}
-	echo "<script>alert('Message sent successfully! A confirmation has been sent to your email.'); window.location.href='index.html';</script>";
-	exit();
+        $userMail->send();
+    } catch (Exception $e) {
+        echo "<script>alert('Mailer Error while sending confirmation: {$userMail->ErrorInfo}'); window.location.href='index.html';</script>";
+        exit();
+    }
+    echo "<script>alert('Message sent successfully! A confirmation has been sent to your email.'); window.location.href='index.html';</script>";
+    exit();
 } else {
-	$confirmationMessage = "<h3 style='color:red;'>" . implode("<br>", $errors) . "</h3>";
+    $confirmationMessage = "<h3 style='color:red;'>" . implode("<br>", $errors) . "</h3>";
 }
 $name_cookie = $_COOKIE["contact_name"] ?? "";
 $email_cookie = $_COOKIE["contact_email"] ?? "";

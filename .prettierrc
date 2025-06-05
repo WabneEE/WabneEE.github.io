@@ -1,0 +1,14 @@
+{
+  "printWidth": 10000,
+  "plugins": ["@prettier/plugin-php"],
+  "tabWidth": 2,
+  "overrides": [
+    {
+      "files": "*.php",
+      "options": {
+        "tabWidth": 4,
+        "printWidth": 120
+      }
+    }
+  ]
+}
