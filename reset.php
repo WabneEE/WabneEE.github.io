@@ -6,57 +6,57 @@ $success = "";
 $error = "";
 function sendResetOTP($email, $otp)
 {
-    $mail = new PHPMailer(true);
-    $mail->isSMTP();
-    $mail->Host = "smtp.gmail.com";
-    $mail->SMTPAuth = true;
-    $mail->Username = "terncoders@gmail.com";
-    $mail->Password = "tllfxoykrhnsraqk";
-    $mail->SMTPSecure = "tls";
-    $mail->Port = 587;
-    $mail->setFrom("terncoders@gmail.com", "TernCoders");
-    $mail->addAddress($email);
-    $mail->isHTML(true);
-    $mail->Subject = "Reset Password OTP";
-    $mail->Body = "Your OTP to reset password is <b>$otp</b>";
-    $mail->send();
+	$mail = new PHPMailer(true);
+	$mail->isSMTP();
+	$mail->Host = "smtp.gmail.com";
+	$mail->SMTPAuth = true;
+	$mail->Username = "terncoders@gmail.com";
+	$mail->Password = "tllfxoykrhnsraqk";
+	$mail->SMTPSecure = "tls";
+	$mail->Port = 587;
+	$mail->setFrom("terncoders@gmail.com", "TernCoders");
+	$mail->addAddress($email);
+	$mail->isHTML(true);
+	$mail->Subject = "Reset Password OTP";
+	$mail->Body = "Your OTP to reset password is <b>$otp</b>";
+	$mail->send();
 }
 if (isset($_POST["send_otp"])) {
-    $email = $_POST["email"] ?? "";
-    if ($email) {
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND email_verified = 1");
-        $stmt->execute([$email]);
-        if ($stmt->rowCount() > 0) {
-            $otp = rand(100000, 999999);
-            $update = $pdo->prepare("UPDATE users SET otp = ? WHERE email = ?");
-            $update->execute([$otp, $email]);
-            sendResetOTP($email, $otp);
-            $success = "OTP sent to your email.";
-        } else {
-            $error = "Email not found or not verified.";
-        }
-    } else {
-        $error = "Email is required.";
-    }
+	$email = $_POST["email"] ?? "";
+	if ($email) {
+		$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND email_verified = 1");
+		$stmt->execute([$email]);
+		if ($stmt->rowCount() > 0) {
+			$otp = rand(100000, 999999);
+			$update = $pdo->prepare("UPDATE users SET otp = ? WHERE email = ?");
+			$update->execute([$otp, $email]);
+			sendResetOTP($email, $otp);
+			$success = "OTP sent to your email.";
+		} else {
+			$error = "Email not found or not verified.";
+		}
+	} else {
+		$error = "Email is required.";
+	}
 }
 if (isset($_POST["reset_password"])) {
-    $email = $_POST["email"] ?? "";
-    $otp = $_POST["otp"] ?? "";
-    $new_password = $_POST["new_password"] ?? "";
-    if ($email && $otp && $new_password) {
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND otp = ?");
-        $stmt->execute([$email, $otp]);
-        if ($stmt->rowCount() > 0) {
-            $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
-            $update = $pdo->prepare("UPDATE users SET password_hash = ?, otp = NULL WHERE email = ?");
-            $update->execute([$password_hash, $email]);
-            $success = "Password reset successfully. You can now login.";
-        } else {
-            $error = "Invalid OTP.";
-        }
-    } else {
-        $error = "All fields are required.";
-    }
+	$email = $_POST["email"] ?? "";
+	$otp = $_POST["otp"] ?? "";
+	$new_password = $_POST["new_password"] ?? "";
+	if ($email && $otp && $new_password) {
+		$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND otp = ?");
+		$stmt->execute([$email, $otp]);
+		if ($stmt->rowCount() > 0) {
+			$password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+			$update = $pdo->prepare("UPDATE users SET password_hash = ?, otp = NULL WHERE email = ?");
+			$update->execute([$password_hash, $email]);
+			$success = "Password reset successfully. You can now login.";
+		} else {
+			$error = "Invalid OTP.";
+		}
+	} else {
+		$error = "All fields are required.";
+	}
 }
 ?>
 <!doctype html>

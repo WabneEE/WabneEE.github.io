@@ -67,8 +67,7 @@ If any of them are missing, follow the steps below:
 $pdo = new PDO("mysql:host=localhost;dbname=contact_form;charset=utf8", "root", "(your_password)");
 ```
 
-Then open MySQL workbench and choose local instance under MySQL connection and sign in with your chosen password.
-Then, paste the following into query 1 and click the thunderbolt to execute:
+Then open MySQL workbench and choose local instance under MySQL connection and sign in with your chosen password. Then, paste the following into query 1 and click the thunderbolt to execute:
 
 ```sql
 CREATE DATABASE contact_form;
@@ -98,8 +97,7 @@ browser-sync --version
 - Run the Composer installer from the `Imp packages` folder.
 - Choose Developer Mode and install to your preferred directory.
 - When prompted for PHP, browse to and select `php.exe` from your installed PHP folder.
-- Complete the installation.
-  To install PHPMailer in the project:
+- Complete the installation. To install PHPMailer in the project:
 
 ```bash
 composer require phpmailer/phpmailer
@@ -141,8 +139,7 @@ USE contact_form;
 SELECT * FROM messages;
 ```
 
-Then click the thunderbolt button ad you will able to view stored submissions.
-**Tip:** To maximise the view of stored submissions close the three sidebars by using the three buttons on top right.
+Then click the thunderbolt button ad you will able to view stored submissions. **Tip:** To maximise the view of stored submissions close the three sidebars by using the three buttons on top right.
 
 ## For MacOS/Linux:
 
