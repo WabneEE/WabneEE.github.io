@@ -2,19 +2,10 @@
 	"printWidth": 1000,
 	"tabWidth": 4,
 	"useTabs": true,
-	"htmlWhitespaceSensitivity": "ignore",
+	"htmlWhitespaceSensitivity": "css",
 	"bracketSameLine": true,
 	"proseWrap": "never",
 	"singleAttributePerLine": false,
 	"plugins": ["@prettier/plugin-php"],
-	"phpVersion": "8.2",
-	"overrides": [
-		{
-			"files": ["*.html"],
-			"options": {
-				"bracketSameLine": true,
-				"htmlWhitespaceSensitivity": "ignore"
-			}
-		}
-	]
+	"phpVersion": "8.2"
 }
