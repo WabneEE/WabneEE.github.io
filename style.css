@@ -1091,6 +1091,39 @@ span.root-top::before {
   background-color: black;
   top: 10.5%;
 }
+.answer-btn {
+  color: rgba(6, 197, 6, 0.954);
+  font-size: 1.5vw;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+.answer-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background-color: rgba(6, 197, 6, 0.954);
+  transition: width 0.3s ease;
+}
+.answer-btn:hover::after {
+  width: 100%;
+}
+.answer-btn:hover {
+  color: #04aa04;
+}
+.answer-option {
+  display: none;
+  font-size: 1.5vw;
+  color: blue;
+  margin-top: 10px;
+}
 @media (orientation: portrait) {
   html {
     scroll-padding-top: 10vw;
