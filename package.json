@@ -20,6 +20,6 @@
 	"homepage": "https://github.com/WabneEE/WabneEE.github.io#readme",
 	"devDependencies": {
 		"html-minifier": "^4.0.0",
-		"html-minifier-terser": "^3.1.0"
+		"html-minifier-terser": "^7.2.0"
 	}
 }

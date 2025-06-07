@@ -3,6 +3,5 @@ composer.json
 composer.lock
 .prettierrc
 .py
-php.html
-minify.js
+.html
 node_modules/
