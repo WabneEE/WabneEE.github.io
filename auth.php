@@ -15,7 +15,7 @@ function sendOTP($email, $name)
 	$mail->Host = "smtp.gmail.com";
 	$mail->SMTPAuth = true;
 	$mail->Username = "terncoders@gmail.com";
-	$mail->Password = "tllfxoykrhnsraqk";
+	$mail->Password = "zufafvpiqtxzmljx";
 	$mail->SMTPSecure = "tls";
 	$mail->Port = 587;
 	$mail->setFrom("terncoders@gmail.com", "TernCoders");
