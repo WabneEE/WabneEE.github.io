@@ -23,25 +23,29 @@ function sendOTP($email, $name)
 	$mail->isHTML(true);
 	$mail->Subject = "Your OTP Code - TernCoders";
 	$mail->Body = <<<HTML
-		<html>
-			<head>
-				<meta charset="UTF-8" />
-				<title>OTP Verification</title>
-			</head>
-			<body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4">
-				<div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 5px">
-					<h2 style="color: #333">Hello $name,</h2>
-					<p style="font-size: 16px">Your One-Time Password (OTP) for verifying your email address is:</p>
-					<h1 style="text-align: center; color: #000">$otp</h1>
-					<p style="font-size: 14px; color: #555">
-						Please enter this code to complete your registration. This OTP is valid for a short time only.
-					</p>
-					<p style="font-size: 14px; color: #555">If you did not request this, please ignore this email.</p>
+	<!doctype html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<title>OTP Verification</title>
+		</head>
+		<body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4">
+			<div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 5px">
+				<h2 style="color: #333">Hello $name,</h2>
+				<p style="font-size: 16px">Your One-Time Password (OTP) for verifying your email address is:</p>
+				<h1 style="text-align: center; color: #000">$otp</h1>
+				<p style="font-size: 14px; color: #555">Please enter this code to complete your registration. This OTP is valid for a short time only.</p>
+				<p style="font-size: 14px; color: #555">If you did not request this, please ignore this email.</p>
+				<br />
+				<p style="font-size: 14px">
+					Thanks,
 					<br />
-					<p style="font-size: 14px">Thanks,<br /><b>TernCoders Team</b></p>
-				</div>
-			</body>
-		</html>
+					<b>TernCoders Team</b>
+				</p>
+			</div>
+		</body>
+	</html>
 	HTML;
 	$mail->send();
 }
@@ -90,7 +94,7 @@ if (isset($_POST["login"])) {
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="source" content="dynamic">
+		<meta name="source" content="dynamic" />
 		<title>TernCoders - Auth</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="style.css" />
@@ -119,7 +123,11 @@ if (isset($_POST["login"])) {
 					<button class="nav-btn nav-btn-link"><a href="auth.php">Log In</a></button>
 				</li>
 			</ul>
-			<div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+			<div class="hamburger">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</div>
 		</nav>
 		<section class="log auth">
 			<form method="POST">
@@ -127,7 +135,10 @@ if (isset($_POST["login"])) {
 				<input type="email" name="email" placeholder="Email" required />
 				<input type="password" id="password" name="password" placeholder="Password" required />
 				<button type="submit" name="login">Login</button>
-				<label><input type="checkbox" onclick="togglePasswordVisibility('password', this)" /> Show Password</label>
+				<label>
+					<input type="checkbox" onclick="togglePasswordVisibility('password', this)" />
+					Show Password
+				</label>
 			</form>
 			<form method="POST">
 				<h2>Register</h2>
@@ -135,7 +146,10 @@ if (isset($_POST["login"])) {
 				<input type="email" name="email" placeholder="Email" required />
 				<input type="password" id="password" name="password" placeholder="Password" required />
 				<button type="submit" name="register">Register</button>
-				<label><input type="checkbox" onclick="togglePasswordVisibility('password', this)" /> Show Password</label>
+				<label>
+					<input type="checkbox" onclick="togglePasswordVisibility('password', this)" />
+					Show Password
+				</label>
 			</form>
 			<p class="error"><?php echo htmlspecialchars($error); ?></p>
 			<p class="success"><?php echo htmlspecialchars($success); ?></p>

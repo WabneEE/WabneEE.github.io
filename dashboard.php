@@ -3,7 +3,8 @@ if (isset($_COOKIE["remembered_email"])) {
 	$rememberedEmail = $_COOKIE["remembered_email"];
 } else {
 	$rememberedEmail = "";
-}
+} ?>
+<?php
 session_start();
 $pdo = new PDO("mysql:host=localhost;dbname=login_db", "root", "b#P3L8jQoR*5uVp");
 if (!isset($_SESSION["user"])) {
@@ -32,9 +33,9 @@ if (isset($_POST["delete"])) {
 		$_SESSION["delete_email"] = $user["email"];
 		$email = $user["email"];
 		$name = $user["name"];
-		$verify_link = "https://yourdomain.com/confirm_delete.php?token=" . $token;
+		$verify_link = "http://localhost/verify.php?delete=1&token=$token&email=" . urlencode($email);
 		$subject = "Confirm Account Deletion";
-		$message = "Hi $name,\n\nClick the link below to confirm account deletion:\n$verify_link\n\nIf you did not request this, please ignore this email.";
+		$message = "Hi $name,\n\nClick the link below to confirm account deletion:\n$verify_link\n\nIgnore this if not intended.";
 		mail($email, $subject, $message);
 		$result = "A verification link has been sent to your email.";
 	} else {
@@ -100,7 +101,7 @@ if (isset($_POST["delete"])) {
 				<h3>Delete Account</h3>
 				<form method="post">
 					<label for="password">Confirm Password:</label>
-					<input type="password" id="password" name="password" required />
+					<input type="password" id="password" name="password" id="password" required />
 					<button name="delete">Delete Account</button>
 					<label>
 						<input type="checkbox" onclick="togglePasswordVisibility('password', this)" />

@@ -1,26 +1,28 @@
 {
-  "name": "wabneee.github.io",
-  "version": "1.0.0",
-  "description": "Minify HTML, CSS and JS files in current directory",
-  "main": ".js",
-  "scripts": {
-    "minify": "node .js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/WabneEE/WabneEE.github.io.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "bugs": {
-    "url": "https://github.com/WabneEE/WabneEE.github.io/issues"
-  },
-  "homepage": "https://github.com/WabneEE/WabneEE.github.io#readme",
-  "devDependencies": {
-    "html-minifier-terser": "^7.2.0",
-    "clean-css": "^5.3.2",
-    "terser": "^5.17.0"
-  }
+	"name": "wabneee.github.io",
+	"version": "1.0.0",
+	"description": "Minify HTML, CSS and JS files in current directory",
+	"main": ".js",
+	"scripts": {
+		"minify": "node .js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/WabneEE/WabneEE.github.io.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "module",
+	"bugs": {
+		"url": "https://github.com/WabneEE/WabneEE.github.io/issues"
+	},
+	"homepage": "https://github.com/WabneEE/WabneEE.github.io#readme",
+	"devDependencies": {
+		"@prettier/plugin-php": "^0.22.4",
+		"clean-css": "^5.3.2",
+		"html-minifier-terser": "^7.2.0",
+		"prettier": "^3.5.3",
+		"terser": "^5.17.0"
+	}
 }
