@@ -4,3 +4,5 @@ composer.lock
 .prettierrc
 .py
 php.html
+minify.js
+node_modules/
