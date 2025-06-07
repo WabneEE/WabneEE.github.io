@@ -1,25 +1,26 @@
 {
-	"name": "wabneee.github.io",
-	"version": "1.0.0",
-	"description": "Click the green \"<> Code\" button on the repository page.\r Under “Local,” click the **Download ZIP** button.\r Download the ZIP to your desired folder.\r Extract it, open the folder, then move to **Step 2**.",
-	"main": ".js",
-	"scripts": {
-		"minify": "node .js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/WabneEE/WabneEE.github.io.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"type": "module",
-	"bugs": {
-		"url": "https://github.com/WabneEE/WabneEE.github.io/issues"
-	},
-	"homepage": "https://github.com/WabneEE/WabneEE.github.io#readme",
-	"devDependencies": {
-		"html-minifier-terser": "^7.2.0",
-		"terser": "^5.27.0"
-	}
+  "name": "wabneee.github.io",
+  "version": "1.0.0",
+  "description": "Minify HTML, CSS and JS files in current directory",
+  "main": ".js",
+  "scripts": {
+    "minify": "node .js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WabneEE/WabneEE.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/WabneEE/WabneEE.github.io/issues"
+  },
+  "homepage": "https://github.com/WabneEE/WabneEE.github.io#readme",
+  "devDependencies": {
+    "html-minifier-terser": "^7.2.0",
+    "clean-css": "^5.3.2",
+    "terser": "^5.17.0"
+  }
 }
