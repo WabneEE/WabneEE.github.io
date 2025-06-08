@@ -840,16 +840,23 @@ section {
 .chapter span {
   font-weight: bold;
 }
+.chapter .landscapely,
+.chapter .portraitly {
+  font-weight: normal;
+}
 .chapter p {
   font-size: 1.5vw;
   margin-block: 1vw;
   line-height: 1.4;
 }
+.chapter .landscapely {
+  font-size: 1.5vw;
+}
 .highlighted-span {
   background-color: rgba(234, 231, 231, 0.899);
 }
 .chapter .inv {
-  font-size: 1.5vw;
+  font-size: inherit;
   margin-block: 1vw;
   line-height: 1.4;
   color: transparent;
@@ -871,8 +878,7 @@ section {
 .frac .num,
 .frac .den {
   font-size: 1.2vw;
-  line-height: 1;
-  height: 1.5vw;
+  height: fit-content;
   display: flex;
   align-items: center;
   font-weight: normal;
@@ -997,7 +1003,6 @@ section {
 .fracs1 .den {
   font-size: 1.5vw;
   line-height: 1;
-  height: 1.5vw;
   margin-block: 0.25vw;
   display: flex;
   align-items: center;
@@ -1362,58 +1367,95 @@ span.root-top::before {
   }
   .our-projects {
     width: 60vw;
-    height: fit-content;
     padding: 2vw;
     margin: 2.4vw auto;
   }
   .chapter {
     margin-top: 10vw;
   }
+  .frac {
+    margin: 0 0.5vw;
+  }
+  .frac .num,
+  .frac .den {
+    font-size: 3.75vw;
+    padding: 0.5vw;
+    height: fit-content;
+  }
+  .frac .bar {
+    height: 0.3vw;
+    margin: 0.3vw 0;
+  }
   .number-line {
     width: 65vw;
     margin: 4.125vw 8.25vw 8.25vw 8.25vw;
   }
   .label-top {
-    font-size: 2vw;
-    top: -3vw;
+    font-size: 3vw;
+    top: -4vw;
+    left: -170%;
   }
   .fraction {
-    font-size: 2vw;
+    font-size: 2.5vw;
     top: 3vw;
   }
   .fraction .bar {
-    height: 0.15vw;
+    height: 0.3vw;
   }
   .chapter h1 {
     font-size: 10vw;
-    line-height: 1.5;
     margin-bottom: 2vw;
   }
   .chapter h2 {
     font-size: 5vw;
-    font-weight: 800;
     margin-block: 1.2vw;
-    color: rgba(255, 0, 0, 0.804);
   }
   .chapter h3 {
     font-size: 5vw;
     margin-block: 1.5vw;
   }
-  .chapter span {
-    font-weight: bold;
-  }
   .chapter p {
     font-size: 4.5vw;
     margin-block: 2.5vw;
-    line-height: 1.6;
+  }
+  .chapter .portraitly {
+    font-size: 4.5vw;
   }
   .chapter ul li {
     font-size: 5vw;
-
     margin-block: 2.5vw;
   }
   .chapter .answer-btn {
     font-size: 5vw;
+  }
+  .chapter table {
+    font-size: 4vw;
+    margin: 5vw auto;
+  }
+  .chapter td {
+    width: 15vw;
+    height: 10vh;
+  }
+  .fracs1 {
+    margin: 0 0.2vw 1.8vw 0.2vw;
+    translate: 0 -0.35vw;
+  }
+  .fracs1 .num,
+  .fracs1 .den {
+    font-size: 1.5vw;
+    margin-block: 0.25vw;
+  }
+  .fracs1 .bar {
+    height: 0.15vw;
+  }
+  .fracs1half {
+    margin: 0 0 1.8vw 0;
+  }
+  .fracs1e .equals-sign {
+    translate: -1.5vw 1vw;
+  }
+  .fracs1es .equals-sign {
+    translate: -1.3vw 0.3vw;
   }
 }
 @media (orientation: portrait) and (max-width: 513px) {
@@ -1501,16 +1543,5 @@ span.root-top::before {
     height: fit-content;
     padding: 2vw;
     margin: 2.4vw auto;
-  }
-  .label-top {
-    font-size: 2.6vw;
-    top: -3.5vw;
-  }
-  .fraction {
-    font-size: 2.6vw;
-    top: 3.5vw;
-  }
-  .fraction .bar {
-    height: 0.2vw;
   }
 }
