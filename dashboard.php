@@ -25,23 +25,6 @@ if (isset($_POST["logout"])) {
 	header("Location: auth.php");
 	exit();
 }
-if (isset($_POST["delete"])) {
-	$password = $_POST["password"];
-	if ($user && password_verify($password, $user["password_hash"])) {
-		$token = bin2hex(random_bytes(16));
-		$_SESSION["delete_token"] = $token;
-		$_SESSION["delete_email"] = $user["email"];
-		$email = $user["email"];
-		$name = $user["name"];
-		$verify_link = "http://localhost/verify.php?delete=1&token=$token&email=" . urlencode($email);
-		$subject = "Confirm Account Deletion";
-		$message = "Hi $name,\n\nClick the link below to confirm account deletion:\n$verify_link\n\nIgnore this if not intended.";
-		mail($email, $subject, $message);
-		$result = "A verification link has been sent to your email.";
-	} else {
-		$result = "Incorrect password.";
-	}
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -50,7 +33,7 @@ if (isset($_POST["delete"])) {
 		<meta name="source" content="dynamic" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>TernCoders - Dashboard</title>
+		<title>WabneEE - Dashboard</title>
 		<link rel="stylesheet" href="style.css" />
 		<script src="script.js" defer></script>
 		<link rel="icon" href="favicon.gif" type="image/gif" />

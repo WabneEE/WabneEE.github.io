@@ -10,11 +10,11 @@ function sendResetOTP($email, $otp)
 	$mail->isSMTP();
 	$mail->Host = "smtp.gmail.com";
 	$mail->SMTPAuth = true;
-	$mail->Username = "terncoders@gmail.com";
-	$mail->Password = "tllfxoykrhnsraqk";
+	$mail->Username = "arczardrom@gmail.com";
+	$mail->Password = "zufafvpiqtxzmljx";
 	$mail->SMTPSecure = "tls";
 	$mail->Port = 587;
-	$mail->setFrom("terncoders@gmail.com", "TernCoders");
+	$mail->setFrom("arczardrom@gmail.com", "WabneEE");
 	$mail->addAddress($email);
 	$mail->isHTML(true);
 	$mail->Subject = "Reset Password OTP";
@@ -67,7 +67,7 @@ if (isset($_POST["reset_password"])) {
 		<link rel="stylesheet" href="style.css" />
 		<script src="script.js" defer></script>
 		<link rel="icon" href="favicon.gif" type="image/gif" />
-		<title>TernCoders - Reset Password</title>
+		<title>WabneEE - Reset Password</title>
 		<link rel="stylesheet" href="style.css" />
 		<script src="script.js" defer></script>
 		<link rel="shortcut icon" href="favicon.gif" type="image/x-icon" />

@@ -5,50 +5,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 $pdo = new PDO("mysql:host=localhost;dbname=login_db", "root", "b#P3L8jQoR*5uVp");
 $error = "";
 $success = "";
-function sendOTP($email, $name)
-{
-	$otp = rand(100000, 999999);
-	$_SESSION["verify_otp"] = $otp;
-	$_SESSION["verify_email"] = $email;
-	$mail = new PHPMailer(true);
-	$mail->isSMTP();
-	$mail->Host = "smtp.gmail.com";
-	$mail->SMTPAuth = true;
-	$mail->Username = "terncoders@gmail.com";
-	$mail->Password = "zufafvpiqtxzmljx";
-	$mail->SMTPSecure = "tls";
-	$mail->Port = 587;
-	$mail->setFrom("terncoders@gmail.com", "TernCoders");
-	$mail->addAddress($email);
-	$mail->isHTML(true);
-	$mail->Subject = "Your OTP Code - TernCoders";
-	$mail->Body = <<<HTML
-	<!doctype html>
-	<html lang="en">
-		<head>
-			<meta charset="UTF-8" />
-			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<title>OTP Verification</title>
-		</head>
-		<body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4">
-			<div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 5px">
-				<h2 style="color: #333">Hello $name,</h2>
-				<p style="font-size: 16px">Your One-Time Password (OTP) for verifying your email address is:</p>
-				<h1 style="text-align: center; color: #000">$otp</h1>
-				<p style="font-size: 14px; color: #555">Please enter this code to complete your registration. This OTP is valid for a short time only.</p>
-				<p style="font-size: 14px; color: #555">If you did not request this, please ignore this email.</p>
-				<br />
-				<p style="font-size: 14px">
-					Thanks,
-					<br />
-					<b>TernCoders Team</b>
-				</p>
-			</div>
-		</body>
-	</html>
-	HTML;
-	$mail->send();
-}
 if (isset($_POST["register"])) {
 	$name = $_POST["name"] ?? "";
 	$email = $_POST["email"] ?? "";
@@ -95,7 +51,7 @@ if (isset($_POST["login"])) {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="source" content="dynamic" />
-		<title>TernCoders - Auth</title>
+		<title>WabneEE - Auth</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="style.css" />
 		<script src="script.js" defer></script>
