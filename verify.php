@@ -1,30 +1,30 @@
 <?php
 $purpose = "";
 if (isset($_GET["register"])) {
-	$purpose = "Account Creation";
+  $purpose = "Account Creation";
 }
 if (isset($_GET["reset"])) {
-	$purpose = "Password Reset";
+  $purpose = "Password Reset";
 }
 if (isset($_GET["delete"])) {
-	$purpose = "Account Deletion";
+  $purpose = "Account Deletion";
 }
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-	if ($_POST["otp"] == $_COOKIE["otp"]) {
-		$email = $_COOKIE["email"];
-		if ($purpose === "Account Creation") {
-			echo "<h3>Account successfully created for $email!</h3>";
-		} elseif ($purpose === "Password Reset") {
-			echo "<h3>Password reset successful for $email!</h3>";
-		} elseif ($purpose === "Account Deletion") {
-			echo "<h3>Account $email successfully deleted.</h3>";
-		}
-		setcookie("otp", "", time() - 3600, "/");
-		setcookie("email", "", time() - 3600, "/");
-		exit();
-	} else {
-		echo "<h3>Invalid OTP. Please try again.</h3>";
-	}
+  if ($_POST["otp"] == $_COOKIE["otp"]) {
+    $email = $_COOKIE["email"];
+    if ($purpose === "Account Creation") {
+      echo "<h3>Account successfully created for $email!</h3>";
+    } elseif ($purpose === "Password Reset") {
+      echo "<h3>Password reset successful for $email!</h3>";
+    } elseif ($purpose === "Account Deletion") {
+      echo "<h3>Account $email successfully deleted.</h3>";
+    }
+    setcookie("otp", "", time() - 3600, "/");
+    setcookie("email", "", time() - 3600, "/");
+    exit();
+  } else {
+    echo "<h3>Invalid OTP. Please try again.</h3>";
+  }
 }
 ?>
 <!doctype html>
