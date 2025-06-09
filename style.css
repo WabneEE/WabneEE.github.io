@@ -1032,22 +1032,14 @@ section {
   translate: -1.3vw 0.3vw;
   user-select: text;
 }
-.chapter ul li {
-  font-size: 1.5vw;
-  margin-block: 1vw;
-}
+.chapter ul li,
 .chapter ol li {
   font-size: 1.5vw;
-  margin: 0 0 0 3vw;
+  margin-block: 1vw;
 }
 .table2 td {
   width: fit-content;
   text-align: center;
-}
-.table2 th {
-  width: fit-content;
-  text-align: center;
-  background-color: whitesmoke;
 }
 .table3 td {
   width: 25vw;
@@ -1407,21 +1399,22 @@ span.root-top::before {
     margin-bottom: 2vw;
   }
   .chapter h2 {
-    font-size: 5vw;
+    font-size: 7vw;
     margin-block: 1.2vw;
   }
   .chapter h3 {
-    font-size: 5vw;
+    font-size: 6vw;
     margin-block: 1.5vw;
   }
   .chapter p {
-    font-size: 4.5vw;
+    font-size: 5vw;
     margin-block: 2.5vw;
   }
   .chapter .portraitly {
-    font-size: 4.5vw;
+    font-size: 5vw;
   }
-  .chapter ul li {
+  .chapter ul li,
+  .chapter ol li {
     font-size: 5vw;
     margin-block: 2.5vw;
   }
@@ -1456,6 +1449,22 @@ span.root-top::before {
   }
   .fracs1es .equals-sign {
     translate: -1.3vw 0.3vw;
+  }
+  .table2 td {
+    width: 37.5vw;
+    height: 7.5vw;
+    font-size: 3.5vw;
+  }
+  .table3 th,
+  .table3 td {
+    width: 37.5vw;
+    height: 7.5vw;
+    font-size: 3.5vw;
+  }
+  .heading-sst {
+    font-size: 4.5vw;
+    margin-block: 2vw;
+    margin-left: 1.5vw;
   }
 }
 @media (orientation: portrait) and (max-width: 513px) {
