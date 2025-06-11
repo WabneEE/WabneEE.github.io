@@ -1101,6 +1101,54 @@ span.root-top::before {
   color: blue;
   margin-top: 10px;
 }
+.p-center {
+  text-align: center;
+}
+.division-frame {
+  width: fit-content;
+  margin-inline: 10%;
+  font-family: Arial, sans-serif;
+  font-size: 1.875vw;
+  color: black;
+  position: relative;
+}
+.division-frame .quotient {
+  padding-left: 1.7vw;
+}
+.division-frame .horizontal {
+  width: 10vw;
+  height: 0;
+  border-top: 0.3vw solid black;
+}
+.division-frame .vertical {
+  height: fit-content;
+  border-left: 0.3vw solid black;
+  position: relative;
+}
+.division-frame .div-tick,
+.division-frame .div-ticK {
+  height: fit-content;
+}
+.division-frame .div-tick {
+  border-bottom: 0.3vw solid black;
+}
+.division-frame .div-Tick,
+.division-frame .div-Tick2 {
+  position: absolute;
+  top: -0.05vw;
+  left: -2.9vw;
+  text-align: right;
+  border-bottom: 0.3vw solid black;
+}
+.division-frame .div-Tick {
+  top: -0.05vw;
+}
+.division-frame .div-Tick2 {
+  top: 5.4vw;
+}
+.division-frame .div-TickS {
+  border: none;
+}
 @media (orientation: portrait) {
   html {
     scroll-padding-top: 10vw;
@@ -1244,6 +1292,9 @@ span.root-top::before {
   }
   .portraitly {
     display: block;
+  }
+  .pors1 .portraitly {
+    display: inline;
   }
   .Maha-division {
     display: flex;
@@ -1435,7 +1486,7 @@ span.root-top::before {
   }
   .fracs1 .num,
   .fracs1 .den {
-    font-size: 1.5vw;
+    font-size: 4vw;
     margin-block: 0.25vw;
   }
   .fracs1 .bar {
@@ -1445,10 +1496,10 @@ span.root-top::before {
     margin: 0 0 1.8vw 0;
   }
   .fracs1e .equals-sign {
-    translate: -1.5vw 1vw;
+    translate: -4vw 1.5vw;
   }
   .fracs1es .equals-sign {
-    translate: -1.3vw 0.3vw;
+    translate: -4vw 2.5vw;
   }
   .table2 td {
     width: 37.5vw;
@@ -1465,6 +1516,15 @@ span.root-top::before {
     font-size: 4.5vw;
     margin-block: 2vw;
     margin-left: 1.5vw;
+  }
+  .division-frame {
+    transform: scale(4);
+  }
+  .division-frame:nth-of-type(-n + 3) {
+    margin: 20vw 35vw;
+  }
+  .division-frame:nth-of-type(4) {
+    margin: 30vw 35vw;
   }
 }
 @media (orientation: portrait) and (max-width: 513px) {
