@@ -1,19 +1,37 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <title>Dashboard</title>
-  </head>
-  <body>
-    <h2 id="greeting">Hello!</h2>
+    <link rel="icon" href="favicon.gif" />
     <script>
-      const name = localStorage.getItem("first_name");
-      const token = localStorage.getItem("access_token");
-      if (!name || !token) {
-        alert("You are not logged in.");
+      window.onload = function () {
+        const token = localStorage.getItem("token"),
+          name = localStorage.getItem("name");
+        if (!token || !name)
+          return (window.location.href = "login.html?error=unauthorized");
+        document.getElementById("welcome").innerText = "Hello, " + name + "!";
+      };
+      function logout() {
+        localStorage.clear();
         window.location.href = "login.html";
-      } else {
-        document.getElementById("greeting").innerText = `Hello, ${name}!`;
+      }
+      function deleteAccount() {
+        fetch("https://<YOUR_WORKER_SUBDOMAIN>.workers.dev/delete-account", {
+          method: "POST",
+          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+        })
+          .then((r) => r.json())
+          .then((d) => {
+            if (d.success) logout();
+            else alert("Delete failed.");
+          });
       }
     </script>
+  </head>
+  <body>
+    <h1 id="welcome">Hello!</h1>
+    <button onclick="logout()">Logout</button
+    ><button onclick="deleteAccount()">Delete Account</button>
   </body>
 </html>

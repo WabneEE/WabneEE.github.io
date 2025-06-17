@@ -1,40 +1,36 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <title>Authenticating...</title>
-  </head>
-  <body>
-    <h2>Authenticating...</h2>
+    <link rel="icon" href="favicon.gif" />
     <script>
-      const hashParams = new URLSearchParams(window.location.hash.substring(1));
-      const accessToken = hashParams.get("access_token");
-      const state = hashParams.get("state");
-      if (!accessToken) {
-        document.body.innerHTML = "<h3>Authentication failed.</h3>";
-      } else {
-        fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
-          headers: { Authorization: `Bearer ${accessToken}` },
+      window.onload = function () {
+        const params = new URLSearchParams(window.location.search);
+        const id_token = params.get("credential");
+        if (!id_token)
+          return (window.location.href = "login.html?error=invalid");
+        fetch("https://<YOUR_WORKER_SUBDOMAIN>.workers.dev/auth", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ credential: id_token }),
         })
           .then((res) => res.json())
-          .then((user) => {
-            if (state === "register") {
-              localStorage.setItem("registered_email", user.email);
-              localStorage.setItem("first_name", user.given_name);
-              localStorage.setItem("access_token", accessToken);
-              window.location.href = "dashboard.html";
-            } else if (state === "login") {
-              const registered = localStorage.getItem("registered_email");
-              if (registered === user.email) {
-                localStorage.setItem("first_name", user.given_name);
-                localStorage.setItem("access_token", accessToken);
-                window.location.href = "dashboard.html";
-              } else {
-                alert("You must register before logging in.");
-                window.location.href = "register.html";
-              }
+          .then((data) => {
+            if (data.success) {
+              localStorage.setItem("token", data.token);
+              localStorage.setItem("name", data.name);
+              window.location.href = data.registered
+                ? "dashboard.html"
+                : "login.html";
+            } else {
+              window.location.href = "login.html?error=unauthorized";
             }
           });
-      }
+      };
     </script>
+  </head>
+  <body>
+    <p>Authenticating...</p>
   </body>
 </html>

@@ -1,21 +1,33 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <title>Register</title>
+    <link rel="icon" href="favicon.gif" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+      window.onload = function () {
+        if (localStorage.getItem("token"))
+          return (window.location.href = "dashboard.html");
+        google.accounts.id.initialize({
+          client_id:
+            "54824982861-cc196oi7nptao8oi1oqov2qg47rcgpdv.apps.googleusercontent.com",
+          ux_mode: "redirect",
+          login_uri: "auth.html",
+        });
+      };
+    </script>
   </head>
   <body>
-    <h2>Register with Google</h2>
-    <button onclick="register()">Register</button>
-    <script>
-      function register() {
-        const clientId =
-          "54824982861-cc196oi7nptao8oi1oqov2qg47rcgpdv.apps.googleusercontent.com";
-        const redirectUri = "http://localhost:3000/auth.html";
-        const scope = "openid email profile";
-        const state = "register";
-        const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=${scope}&state=${state}&prompt=consent`;
-        window.location.href = authUrl;
-      }
-    </script>
+    <h1>Register</h1>
+    <div
+      id="g_id_onload"
+      data-client_id="54824982861-cc196oi7nptao8oi1oqov2qg47rcgpdv.apps.googleusercontent.com"
+      data-context="signup"
+      data-ux_mode="redirect"
+      data-login_uri="auth.html"
+      data-auto_prompt="false"
+    ></div>
+    <div class="g_id_signin" data-type="standard" data-size="large"></div>
   </body>
 </html>

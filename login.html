@@ -1,21 +1,35 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <title>Login</title>
+    <link rel="icon" href="favicon.gif" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+      window.onload = function () {
+        google.accounts.id.initialize({
+          client_id:
+            "54824982861-cc196oi7nptao8oi1oqov2qg47rcgpdv.apps.googleusercontent.com",
+          ux_mode: "redirect",
+          login_uri: "auth.html",
+        });
+        const err = new URLSearchParams(window.location.search).get("error");
+        if (err)
+          document.getElementById("error").innerText =
+            "Login failed. Try again.";
+      };
+    </script>
   </head>
   <body>
-    <h2>Login with Google</h2>
-    <button onclick="login()">Login</button>
-    <script>
-      function login() {
-        const clientId =
-          "54824982861-cc196oi7nptao8oi1oqov2qg47rcgpdv.apps.googleusercontent.com";
-        const redirectUri = "http://localhost:3000/auth.html";
-        const scope = "openid email profile";
-        const state = "login";
-        const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=${scope}&state=${state}`;
-        window.location.href = authUrl;
-      }
-    </script>
+    <p id="error" style="color: red"></p>
+    <div
+      id="g_id_onload"
+      data-client_id="54824982861-cc196oi7nptao8oi1oqov2qg47rcgpdv.apps.googleusercontent.com"
+      data-context="signin"
+      data-ux_mode="redirect"
+      data-login_uri="auth.html"
+      data-auto_prompt="false"
+    ></div>
+    <div class="g_id_signin" data-type="standard" data-size="large"></div>
   </body>
 </html>
