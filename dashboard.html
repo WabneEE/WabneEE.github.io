@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <h2 id="greeting">Hello!</h2>
+    <script>
+      const name = localStorage.getItem("first_name");
+      const token = localStorage.getItem("access_token");
+      if (!name || !token) {
+        alert("You are not logged in.");
+        window.location.href = "login.html";
+      } else {
+        document.getElementById("greeting").innerText = `Hello, ${name}!`;
+      }
+    </script>
+  </body>
+</html>

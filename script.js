@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
         });
       } catch (t) {
         console.warn(
-          "Could not access iframe content (CORS or browser restriction).",
+          "Could not access iframe content (CORS or browser restriction)."
         );
       }
     });
@@ -16,15 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
 const t = document.querySelector(".hamburger"),
   e = document.querySelector(".nav-menu");
 function hideElements() {
-  [
-    "contact-us",
-    "contact-link",
-    "nav-login-link",
-    "nav-register-link",
-    "footer-buttons",
-    "fqc",
-    "fqc2",
-  ].forEach((t) => {
+  ["contact-us", "fqc", "fqc2"].forEach((t) => {
     const e = document.getElementById(t);
     e && (e.style.display = "none");
   }),

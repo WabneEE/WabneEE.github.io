@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Authenticating...</title>
+  </head>
+  <body>
+    <h2>Authenticating...</h2>
+    <script>
+      const hashParams = new URLSearchParams(window.location.hash.substring(1));
+      const accessToken = hashParams.get("access_token");
+      const state = hashParams.get("state");
+      if (!accessToken) {
+        document.body.innerHTML = "<h3>Authentication failed.</h3>";
+      } else {
+        fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        })
+          .then((res) => res.json())
+          .then((user) => {
+            if (state === "register") {
+              localStorage.setItem("registered_email", user.email);
+              localStorage.setItem("first_name", user.given_name);
+              localStorage.setItem("access_token", accessToken);
+              window.location.href = "dashboard.html";
+            } else if (state === "login") {
+              const registered = localStorage.getItem("registered_email");
+              if (registered === user.email) {
+                localStorage.setItem("first_name", user.given_name);
+                localStorage.setItem("access_token", accessToken);
+                window.location.href = "dashboard.html";
+              } else {
+                alert("You must register before logging in.");
+                window.location.href = "register.html";
+              }
+            }
+          });
+      }
+    </script>
+  </body>
+</html>
