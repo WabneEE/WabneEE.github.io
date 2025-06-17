@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
 const t = document.querySelector(".hamburger"),
   e = document.querySelector(".nav-menu");
 function hideElements() {
-  ["contact-us", "fqc", "fqc2"].forEach((t) => {
+  ["contact-us", "contact-link", "fqc", "fqc2"].forEach((t) => {
     const e = document.getElementById(t);
     e && (e.style.display = "none");
   }),
