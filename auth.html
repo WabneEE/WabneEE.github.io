@@ -10,7 +10,7 @@
         const id_token = params.get("credential");
         if (!id_token)
           return (window.location.href = "login.html?error=invalid");
-        fetch("https://<YOUR_WORKER_SUBDOMAIN>.workers.dev/auth", {
+        fetch("https://oauth-backend.arczardrom.workers.dev/auth", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ credential: id_token }),
